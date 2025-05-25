@@ -1,0 +1,7 @@
+yamltable: 1.0.0
+
+columns:
+  - Column 1
+  - ColumnC: Column C
+  - key: Column Key
+  - config: Column Config

@@ -1,0 +1,66 @@
+{
+  "name": "yaml-table",
+  "sourceRoot": "packages/libs/yaml-table/src",
+  "projectType": "library",
+  "targets": {
+    "build:npm-package": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "command": "node packages/libs/yaml-table/tools/build-npm-package.js"
+      }
+    },
+    "build:types": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/libs/yaml-table/tsconfig.types.json",
+        "cwd": "."
+      }
+    },
+    "build:meta": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cp packages/libs/yaml-table/{package.json,README.md} dist/packages/libs/yaml-table/",
+        "cwd": "."
+      }
+    },
+    "build:all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run yaml-table:build:npm-package",
+          "nx run yaml-table:build:types",
+          "nx run yaml-table:build:meta"
+        ]
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": [
+          "bash packages/libs/yaml-table/src/e2e/run-all.bash"
+        ],
+        "cwd": "."
+      },
+      "dependsOn": [{
+        "target": "build:all",
+        "projects": "self"
+      }]
+    },
+    "publish-npm": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "cache": false,
+      "options": {
+        "commands": [
+          "cd dist/packages/libs/yaml-table && pnpm publish --registry=http://localhost:4873 --access public --no-git-checks --//localhost:4873/:_authToken=fake-token"
+        ],
+        "cwd": "."
+      },
+      "dependsOn": [{
+        "target": "build:all",
+        "projects": "self"
+      }]
+    }
+  }
+}

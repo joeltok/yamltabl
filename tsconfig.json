@@ -2,5 +2,12 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./packages/libs/yaml-table-core"
+    },
+    {
+      "path": "./packages/libs/yaml-table"
+    }
+  ]
 }

@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "rootDir": "packages/libs",
+    "outDir": "dist/packages/libs/yaml-table/lib"
+  },
+  "include": [
+    "packages/libs/yaml-table/src/**/*.ts",
+    "packages/libs/yaml-table-core/src/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.e2e.ts"
+  ]
+}

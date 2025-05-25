@@ -1,0 +1,25 @@
+# path to a directory with all packages
+storage: ../../../tmp/local-registry/storage
+
+packages:
+  '**':
+    # give all users (including non-authenticated users) full access
+    # because it is a local registry
+    access: $anonymous
+    publish: $anonymous
+    unpublish: $anonymous
+    proxy: false
+
+# log settings
+log:
+  type: stdout
+  format: pretty
+  level: warn
+
+auth:
+  htpasswd:
+    file: /tmp/verdaccio-htpasswd
+    max_users: -1
+
+publish:
+  allow_offline: true # set offline to true to allow publish offline
