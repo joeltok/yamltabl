@@ -1,11 +1,3 @@
-# yaml-table-cli
+# yaml-table
 
-This library was generated with [Nx](https://nx.dev).
-
-## Building
-
-Run `nx build yaml-table-cli` to build the library.
-
-## Running unit tests
-
-Run `nx test yaml-table-cli` to execute the unit tests via [Jest](https://jestjs.io).
+This library wraps the core library for packaging as an npm library. There are two parts to this library, a straightforward npm package and a cli tool. 

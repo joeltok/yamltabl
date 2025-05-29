@@ -1,10 +1,10 @@
 #!/usr/bin/env bats
 
-load '../../../../../../node_modules/bats-support/load'
-load '../../../../../../node_modules/bats-assert/load'
+load '../../../../../node_modules/bats-support/load'
+load '../../../../../node_modules/bats-assert/load'
 
 @test "should validate a valid yaml table configuration" {
-  run node dist/packages/libs/yaml-table/cli/cli.cjs validate -i packages/libs/yaml-table/src/e2e/data/good.input.yaml
+  run node dist/packages/libs/yaml-table/cli/cli.cjs validate -i packages/libs/yaml-table/e2e/data/good.input.yaml
 
   assert_success
   assert_output --partial 'ok.'
@@ -12,7 +12,7 @@ load '../../../../../../node_modules/bats-assert/load'
 }
 
 @test "should invalidate an invalid yaml table configuration" {
-  run node dist/packages/libs/yaml-table/cli/cli.cjs validate -i packages/libs/yaml-table/src/e2e/data/bad.input.yaml
+  run node dist/packages/libs/yaml-table/cli/cli.cjs validate -i packages/libs/yaml-table/e2e/data/bad.input.yaml
 
   assert_failure
   assert_output --partial 'Validation failed'

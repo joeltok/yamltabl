@@ -38,7 +38,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": [
-          "bash packages/libs/yaml-table/src/e2e/run-all.bash"
+          "bash packages/libs/yaml-table/e2e/run-all.bash"
         ],
         "cwd": "."
       },

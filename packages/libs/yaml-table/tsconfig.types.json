@@ -5,7 +5,7 @@
     "emitDeclarationOnly": true,
     "noEmit": false,
     "rootDir": "packages/libs",
-    "outDir": "dist/packages/libs/yaml-table/lib"
+    "outDir": "../../../dist/packages/libs/yaml-table/lib"
   },
   "include": [
     "packages/libs/yaml-table/src/**/*.ts",

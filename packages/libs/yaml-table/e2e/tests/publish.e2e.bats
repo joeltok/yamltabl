@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
-load '../../../../../../node_modules/bats-support/load'
-load '../../../../../../node_modules/bats-assert/load'
+load '../../../../../node_modules/bats-support/load'
+load '../../../../../node_modules/bats-assert/load'
 
 @test "should spin up verdaccio and publish @yaml-table/yaml-table" {
   # remove the local registry to prevent conflicts
