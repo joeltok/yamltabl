@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import { Command } from 'commander';
 
-import { validateJsonInput, parseYamlTableString } from '@yaml-table/yaml-table-core';
+import { validateYamlTable } from '@yaml-table/yaml-table-core';
 
 export function buildCommandValidate(program: Command) {
   program
@@ -12,7 +12,7 @@ export function buildCommandValidate(program: Command) {
     const yamlTableFile = opts.input;
     const yamlTableString = await fs.readFile(yamlTableFile, 'utf8');
     try {
-      validateJsonInput(parseYamlTableString(yamlTableString));
+      validateYamlTable(yamlTableString);
       console.log('ok.')
     } catch (err) {
       console.error(err)

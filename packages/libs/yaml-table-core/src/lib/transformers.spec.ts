@@ -1,10 +1,10 @@
 import { minify } from 'html-minifier-terser';
 
-import { yamlTableToHTML } from './yaml-table-converter.js';
-import { minifyConfig } from './configs.js';
+import { yamlTableToHTML } from './transformers.js';
+import { minifyConfig } from '../helpers/configs.js';
 
-describe('yamlTableConverter', () => {
-  it('should parse a yaml table into html', async () => {
+describe('transformers', () => {
+  it('should transform a yaml table into html', async () => {
     const yamlString = `
       yamltable: 1.0.0
 

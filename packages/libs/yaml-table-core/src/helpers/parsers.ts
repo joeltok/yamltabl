@@ -2,13 +2,13 @@ import { parse } from 'yaml';
 import ejs from 'ejs';
 import { minify } from 'html-minifier-terser';
 
-import { IJsonInput } from './types.js';
+import { IJsonInput } from '../types/types.js';
 import { minifyConfig } from './configs.js';
 
-export function parseYamlTableString(yamlString: string): IJsonInput {
+export function parseYamlTableToJson(yamlString: string): IJsonInput {
   const jsonInputRaw = parse(yamlString);
   const { yamltable, config, columns, ...rows } = jsonInputRaw;
-  return {
+  const jsonTable = {
     metadata: {
       yamltable,
       config,
@@ -16,6 +16,7 @@ export function parseYamlTableString(yamlString: string): IJsonInput {
     },
     rows,
   };
+  return jsonTable;
 }
 
 export async function parseJsonTableToHtml(

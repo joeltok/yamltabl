@@ -1,6 +1,6 @@
 import { minify } from 'html-minifier-terser';
 
-import { parseYamlTableString, parseJsonTableToHtml, parseJsonTableToMd } from './parsers.js';
+import { parseYamlTableToJson, parseJsonTableToHtml, parseJsonTableToMd } from './parsers.js';
 import { minifyConfig } from './configs.js';
 
 describe('parseYamlTableString', () => {
@@ -24,7 +24,7 @@ describe('parseYamlTableString', () => {
           </ul>
     `;
 
-    const result = parseYamlTableString(yamlString);
+    const result = parseYamlTableToJson(yamlString);
     expect(result).toEqual({
       metadata: {
         yamltable: '1.0.0',
