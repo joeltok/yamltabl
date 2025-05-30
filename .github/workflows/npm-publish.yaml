@@ -41,25 +41,31 @@ jobs:
         with:
           name: yaml-table-dist
           path: dist/packages/libs/yaml-table
-      # smoke test to ensure no random dependencies pulled from node_modules
-      - run: node dist/packages/libs/yaml-table/cli/cli.cjs --help 
+      - name: Smoke test guard against node_modules dependency in production
+        run: node dist/packages/libs/yaml-table/cli/cli.cjs --help 
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yaml-table-core:test
       - run: pnpm exec nx run yaml-table:test --skip-nx-cache --skip-dependencies
 
-  # publish-npm:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 20
-  #         registry-url: 'https://registry.npmjs.org/'
-  #     - uses: pnpm/action-setup@v2
-  #       with:
-  #         version: 8
-  #     - run: pnpm install --frozen-lockfile
-  #     - run: pnpm publish --access public
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: yaml-table-dist
+          path: dist/packages/libs/yaml-table
+      - run: pnpm install --frozen-lockfile
+      - name: Create .npmrc for publishing to npmjs.com
+        run: echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
+      - run: pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
