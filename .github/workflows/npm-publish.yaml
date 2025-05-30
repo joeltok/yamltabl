@@ -3,8 +3,6 @@ name: NPM Package Publish
 on:
   push:
     branches: [main]
-  release:
-    types: [created]
 
 jobs:
   build:
@@ -48,7 +46,7 @@ jobs:
       - run: pnpm exec nx run yaml-table:test --skip-nx-cache --skip-dependencies
 
   publish-npm:
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -66,6 +64,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Create .npmrc for publishing to npmjs.com
         run: echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
-      - run: pnpm publish --access public
+      - name: Publish to npm
+        run: pnpm publish dist/packages/libs/yaml-table --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
