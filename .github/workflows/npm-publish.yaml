@@ -41,6 +41,9 @@ jobs:
         with:
           name: yaml-table-dist
           path: dist/packages/libs/yaml-table
+      # smoke test to ensure no random dependencies pulled from node_modules
+      - run: node dist/packages/libs/yaml-table/cli/cli.cjs --help 
+      - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yaml-table-core:test
       - run: pnpm exec nx run yaml-table:test --skip-nx-cache --skip-dependencies
 
