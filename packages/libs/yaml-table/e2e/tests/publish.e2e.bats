@@ -25,14 +25,14 @@ load '../../../../../node_modules/bats-assert/load'
   done
 }
 
-@test "publish yamltable" {
+@test "publish yamltabl" {
   # Publish to verdaccio
   pnpm exec nx run yaml-table:publish-npm
 
   # Wait for package to become available in Verdaccio
   echo "Waiting for yaml-table to be retrievable..." >> tmp/bats.log
   for i in {1..20}; do
-    if curl -s http://localhost:4873/yamltable | grep '"name": "yamltable"' > /dev/null; then
+    if curl -s http://localhost:4873/yamltabl | grep '"name": "yamltabl"' > /dev/null; then
       echo "Package is published and available" >> tmp/bats.log
       break
     fi
@@ -41,21 +41,21 @@ load '../../../../../node_modules/bats-assert/load'
   done
 }
 
-@test "should validate that yamltable can be pulled from the local registry" {
+@test "should validate that yamltabl can be pulled from the local registry" {
   export npm_config_registry=http://localhost:4873
-  run pnpm dlx yamltable --help
+  run pnpm dlx yamltabl --help
   assert_success
 }
 
-@test "should validate that yamltable can be used in a js project" {
+@test "should validate that yamltabl can be used in a js project" {
   rm -rf /tmp/test-install
   mkdir /tmp/test-install
   cd /tmp/test-install
   npm init -y
   npm set registry http://localhost:4873/
 
-  npm install yamltable
-  echo "const { yamlTableToHTML } = require('yamltable')" > index.js; 
+  npm install yamltabl
+  echo "const { yamlTableToHTML } = require('yamltabl')" > index.js; 
   echo "console.log(yamlTableToHTML)" >> index.js;
   run node index.js
   assert_success

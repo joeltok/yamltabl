@@ -14,7 +14,7 @@ This utility compiles a defined yaml table into html or markdown, and can be use
 Input:
 
 ```yaml
-yamltable: 1.0.0
+yamltabl: 1.0.0
 
 columns:
   - column1: Column 1
@@ -58,29 +58,29 @@ Note the use of plain html in the `row1, column2` and `row2, column3` field. Cel
 ### As a CLI tool
 
 ```bash
-npx yamltable generate html -i path/to/table.yaml -o path/to/destination/table.html
-npx yamltable generate md -i path/to/table.yaml -o path/to/destination/table.md
+npx yamltabl generate html -i path/to/table.yaml -o path/to/destination/table.html
+npx yamltabl generate md -i path/to/table.yaml -o path/to/destination/table.md
 ```
 
 ### As a library
 
 ```bash
-npm install yamltable
+npm install yamltabl
 ```
 
 or
 
 ```bash
-pnpm install yamltable
+pnpm install yamltabl
 ```
 
 In your code:
 
 ```typescript
-import { yamlTableToHTML, yamlTableToMd } from 'yamltable';
+import { yamlTableToHTML, yamlTableToMd } from 'yamltabl';
 
 const yamlString = `
-  yamltable: 1.0.0
+  yamltabl: 1.0.0
 
   columns:
     - column1: Column 1
