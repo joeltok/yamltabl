@@ -20,7 +20,10 @@
     "build:meta": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cp packages/libs/yaml-table/{package.json,README.md} dist/packages/libs/yaml-table/",
+        "commands": [
+          "cp packages/libs/yaml-table/package.json dist/packages/libs/yaml-table/package.json",
+          "cp packages/libs/yaml-table/README.md dist/packages/libs/yaml-table/README.md"
+        ],
         "cwd": "."
       }
     },
