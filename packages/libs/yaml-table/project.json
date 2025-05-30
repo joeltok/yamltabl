@@ -12,6 +12,9 @@
     },
     "build:types": {
       "executor": "nx:run-commands",
+      "dependsOn": [
+        { "target": "build:npm-package", "projects": "self" }
+      ],
       "options": {
         "command": "tsc -p packages/libs/yaml-table/tsconfig.types.json",
         "cwd": "."
@@ -19,6 +22,9 @@
     },
     "build:meta": {
       "executor": "nx:run-commands",
+      "dependsOn": [
+        { "target": "build:npm-package", "projects": "self" }
+      ],
       "options": {
         "commands": [
           "cp packages/libs/yaml-table/package.json dist/packages/libs/yaml-table/package.json",
@@ -27,15 +33,12 @@
         "cwd": "."
       }
     },
-    "build:all": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "nx run yaml-table:build:npm-package",
-          "nx run yaml-table:build:types",
-          "nx run yaml-table:build:meta"
-        ]
-      }
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": [
+        { "target": "build:meta", "projects": "self" },
+        { "target": "build:types", "projects": "self" }
+      ]
     },
     "test": {
       "executor": "nx:run-commands",
@@ -46,7 +49,7 @@
         "cwd": "."
       },
       "dependsOn": [{
-        "target": "build:all",
+        "target": "build",
         "projects": "self"
       }]
     },
@@ -61,7 +64,7 @@
         "cwd": "."
       },
       "dependsOn": [{
-        "target": "build:all",
+        "target": "build",
         "projects": "self"
       }]
     }
