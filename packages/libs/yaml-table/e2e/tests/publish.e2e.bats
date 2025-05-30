@@ -3,7 +3,9 @@
 load '../../../../../node_modules/bats-support/load'
 load '../../../../../node_modules/bats-assert/load'
 
-@test "should spin up verdaccio and publish @yaml-table/yaml-table" {
+# Tests run in sequence
+
+@test "should spin up verdaccio" {
   # remove the local registry to prevent conflicts
   rm -rf tmp/local-registry
 
@@ -19,28 +21,48 @@ load '../../../../../node_modules/bats-assert/load'
       break
     fi
     echo "Waiting... ($i)" >> tmp/bats.log
-    sleep 1
+    sleep 0.5
   done
+}
 
+@test "publish yaml-table" {
   # Publish to verdaccio
   pnpm exec nx run yaml-table:publish-npm
 
   # Wait for package to become available in Verdaccio
-  echo "Waiting for @yaml-table/yaml-table to be retrievable..." >> tmp/bats.log
+  echo "Waiting for yaml-table to be retrievable..." >> tmp/bats.log
   for i in {1..20}; do
-    if curl -s http://localhost:4873/@yaml-table%2fyaml-table | grep '"name": "@yaml-table/yaml-table"' > /dev/null; then
+    if curl -s http://localhost:4873/yaml-table | grep '"name": "yaml-table"' > /dev/null; then
       echo "Package is published and available" >> tmp/bats.log
       break
     fi
     echo "Waiting for package... ($i)" >> tmp/bats.log
-    sleep 1
+    sleep 0.5
   done
+}
 
+@test "should validate that yaml-table can be pulled from the local registry" {
   export npm_config_registry=http://localhost:4873
-  run pnpm dlx @yaml-table/yaml-table --help
+  run pnpm dlx yaml-table --help
   assert_success
+}
 
-  # kill verdaccio
+@test "should validate that yaml-table can be used in a js project" {
+  rm -rf /tmp/test-install
+  mkdir /tmp/test-install
+  cd /tmp/test-install
+  npm init -y
+  npm set registry http://localhost:4873/
+
+  npm install yaml-table
+  echo "const { yamlTableToHTML } = require('yaml-table')" > index.js; 
+  echo "console.log(yamlTableToHTML)" >> index.js;
+  run node index.js
+  assert_success
+  assert_output --partial '[AsyncFunction: yamlTableToHTML]'
+}
+
+@test "should kill verdaccio" {
   echo "Killing Verdaccio" >> tmp/bats.log
   lsof -ti :4873 | xargs kill -9
   echo "verdaccio killed" >> tmp/bats.log
