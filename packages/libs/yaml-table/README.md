@@ -1,17 +1,18 @@
-# Yaml Table
+# Yamltabl
+
+Yamltabl lets you define tables in YAML using a predictable schema — with Markdown/HTML output built-in.  
+
+Perfect for everything-as-code documentation and static sites — without the messiness of raw Markdown or HTML tables.
 
 
-Build a table using yaml and export to different formats – currently html and markdown are supported. 
+<!-- Vision: YAML as your table editor — powered by a predictable schema, with Markdown/HTML output built-in. -->
 
-## Why?
 
-Markdown tables are a pain to build, and not very flexible. There are existing utilities in VSCode and online that help to smoothen out this process, but I wanted to explore the possibility of using yaml to build these tables instead.
+## Quick Example
 
-This utility compiles a defined yaml table into html or markdown, and can be used as a cli tool or as a library.
+<br>
 
-## Example
-
-Input:
+**What it looks like in Yamltabl:**
 
 ```yaml
 yamltabl: 1.0.0
@@ -41,19 +42,11 @@ row2:
     </ul>
 ```
 
-Output:
-
-```html
-<table><thead><tr><th id="column1">Column 1</th><th id="column2">Column 2</th><th id="column3">Column 3</th></tr></thead><tbody><tr id="row1"><td>I am some text</td><td>I am also some text</td><td><ul><li>list item 1</li><li>list item 2</li><li>list item 3</li></ul></td></tr><tr id="row2"><td>I am more text</td><td></td><td><ul><li>list item A</li><li>list item B</li><li>list item C</li></ul></td></tr></tbody></table>
-```
-
-Which renders into the following when embedded in markdown:
+Yamltabl converts the YAML above into a Markdown-compatible table:
 
 <table><thead><tr><th id="column1">Column 1</th><th id="column2">Column 2</th><th id="column3">Column 3</th></tr></thead><tbody><tr id="row1"><td>I am some text</td><td>I am also some text</td><td><ul><li>list item 1</li><li>list item 2</li><li>list item 3</li></ul></td></tr><tr id="row2"><td>I am more text</td><td></td><td><ul><li>list item A</li><li>list item B</li><li>list item C</li></ul></td></tr></tbody></table>
 
-Note the use of plain html in the `row1, column2` and `row2, column3` field. Cells are rendered as plain html, which allows for more flexibility, including in rendering html based lists.
-
-## Usage
+## Usage and Installation
 
 ### As a CLI tool
 
@@ -104,4 +97,70 @@ console.log(htmlString);
 const mdString = await yamlTableToMd(yamlString);
 console.log(mdString);
 ```
+
+
+
+## Syntax Comparisons
+
+### Markdown Table
+
+Without Prettifying:
+
+```md
+| Column 1 | Column 2 | Column 3 | 
+| ---| ---| ---| 
+| Cell A | Cell B | <ul> <li> list item 1 <li> list item 2 <li> list item 3</ul> | 
+| Cell 1 |  | <ul> <li> list item 1 <li> list item 2</ul> | 
+```
+
+With Prettifying (which breaks easily on edit):
+
+```md
+| Column 1 | Column 2 | Column 3                                                     |
+|----------|----------|--------------------------------------------------------------|
+| Cell A   | Cell B   | <ul> <li> list item 1 <li> list item 2 <li> list item 3</ul> |
+| Cell 1   |          | <ul> <li> list item 1 <li> list item 2</ul>                  |
+```
+
+### HTML with Prettifying
+
+```html
+<table>
+   <thead>
+      <tr>
+         <th id="column1">Column 1</th>
+         <th id="column2">Column 2</th>
+         <th id="column3">Column 3</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr id="row1">
+         <td>I am some text</td>
+         <td>I am also some text</td>
+         <td>
+            <ul>
+               <li>list item 1</li>
+               <li>list item 2</li>
+               <li>list item 3</li>
+            </ul>
+         </td>
+      </tr>
+      <tr id="row2">
+         <td>I am more text</td>
+         <td></td>
+         <td>
+            <ul>
+               <li>list item A</li>
+               <li>list item B</li>
+               <li>list item C</li>
+            </ul>
+         </td>
+      </tr>
+   </tbody>
+</table>
+```
+<br>
+
+
+
 

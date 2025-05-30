@@ -1,12 +1,12 @@
 {
   "name": "yamltabl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./lib/index.cjs",
   "module": "./lib/index.js",
   "types": "./lib/src/index.d.ts",
   "bin": {
-    "yaml-table": "./cli/cli.cjs"
+    "yamltabl": "./cli/cli.cjs"
   },
   "exports": {
     ".": {
