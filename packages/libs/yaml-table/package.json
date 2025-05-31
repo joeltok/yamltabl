@@ -1,6 +1,6 @@
 {
   "name": "yamltabl",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "./lib/index.cjs",
   "module": "./lib/index.js",
@@ -8,6 +8,13 @@
   "bin": {
     "yamltabl": "./cli/cli.cjs"
   },
+  "files": [
+    "docs",
+    "cli",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
   "exports": {
     ".": {
       "import": "./lib/index.js",
