@@ -28,7 +28,8 @@
       "options": {
         "commands": [
           "cp packages/libs/yaml-table/package.json dist/packages/libs/yaml-table/package.json",
-          "cp packages/libs/yaml-table/README.md dist/packages/libs/yaml-table/README.md"
+          "cp packages/libs/yaml-table/README.md dist/packages/libs/yaml-table/README.md",
+          "cp -r packages/libs/yaml-table/docs dist/packages/libs/yaml-table/docs"
         ],
         "cwd": "."
       }

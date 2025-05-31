@@ -11,7 +11,6 @@ export function validateJsonTable({ metadata, rows }: IJsonInput): void {
 
 export function validateMetadata(metadata: IJsonInputMetadata): void {
   const errors = [];
-  let result;
 
   try {
     validateYamltableField(metadata.yamltable);
@@ -19,7 +18,7 @@ export function validateMetadata(metadata: IJsonInputMetadata): void {
     errors.push((error as Error).message);
   }
 
-  result = v.safeParse(ColumnsSchema, metadata.columns);
+  const result = v.safeParse(ColumnsSchema, metadata.columns);
   if (result.issues?.length) {
     result.issues.forEach((issue) => errors.push(issue.message));
   }
@@ -68,9 +67,8 @@ const ColumnsSchema = v.array(
 
 export function validateRows(rows: IJsonInputRows): void {
   const errors: string[] = [];
-  let result;
 
-  result = v.safeParse(RowsSchema, rows);
+  const result = v.safeParse(RowsSchema, rows);
   if (result.issues?.length) {
     result.issues.forEach((issue) => errors.push(issue.message));
   }

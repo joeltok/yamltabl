@@ -46,6 +46,9 @@ Yamltabl converts the YAML above into a Markdown-compatible table:
 
 <table><thead><tr><th id="column1">Column 1</th><th id="column2">Column 2</th><th id="column3">Column 3</th></tr></thead><tbody><tr id="row1"><td>I am some text</td><td>I am also some text</td><td><ul><li>list item 1</li><li>list item 2</li><li>list item 3</li></ul></td></tr><tr id="row2"><td>I am more text</td><td></td><td><ul><li>list item A</li><li>list item B</li><li>list item C</li></ul></td></tr></tbody></table>
 
+
+👉 See the [full schema specification](https://github.com/joeltok/yaml-table/blob/main/docs/schema.md) for a breakdown of each section.
+
 ## Usage and Installation
 
 ### As a CLI tool
@@ -98,69 +101,4 @@ const mdString = await yamlTableToMd(yamlString);
 console.log(mdString);
 ```
 
-
-
-## Syntax Comparisons
-
-### Markdown Table
-
-Without Prettifying:
-
-```md
-| Column 1 | Column 2 | Column 3 | 
-| ---| ---| ---| 
-| Cell A | Cell B | <ul> <li> list item 1 <li> list item 2 <li> list item 3</ul> | 
-| Cell 1 |  | <ul> <li> list item 1 <li> list item 2</ul> | 
-```
-
-With Prettifying (which breaks easily on edit):
-
-```md
-| Column 1 | Column 2 | Column 3                                                     |
-|----------|----------|--------------------------------------------------------------|
-| Cell A   | Cell B   | <ul> <li> list item 1 <li> list item 2 <li> list item 3</ul> |
-| Cell 1   |          | <ul> <li> list item 1 <li> list item 2</ul>                  |
-```
-
-### HTML with Prettifying
-
-```html
-<table>
-   <thead>
-      <tr>
-         <th id="column1">Column 1</th>
-         <th id="column2">Column 2</th>
-         <th id="column3">Column 3</th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr id="row1">
-         <td>I am some text</td>
-         <td>I am also some text</td>
-         <td>
-            <ul>
-               <li>list item 1</li>
-               <li>list item 2</li>
-               <li>list item 3</li>
-            </ul>
-         </td>
-      </tr>
-      <tr id="row2">
-         <td>I am more text</td>
-         <td></td>
-         <td>
-            <ul>
-               <li>list item A</li>
-               <li>list item B</li>
-               <li>list item C</li>
-            </ul>
-         </td>
-      </tr>
-   </tbody>
-</table>
-```
-<br>
-
-
-
-
+👉 Compare with other table authoring tools in [this comparison guide](https://github.com/joeltok/yaml-table/blob/main/docs/syntax-comparisons.md).
