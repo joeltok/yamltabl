@@ -8,6 +8,7 @@
   "bin": {
     "yamltabl": "./cli/cli.cjs"
   },
+  "dependencies": {},
   "files": [
     "docs",
     "cli",
@@ -21,5 +22,17 @@
       "require": "./lib/index.cjs"
     }
   },
-  "dependencies": {}
+  "keywords": [
+    "yamltabl",
+    "yaml-table",
+    "yaml-table-schema",
+    "yaml-to-markdown",
+    "yaml-to-html",
+    "yaml-markdown-tables",
+    "yaml-html-tables",
+    "markdown-table-generator",
+    "yaml-table-generator",
+    "docs-as-code",
+    "cli-table-generator"
+  ]  
 }
