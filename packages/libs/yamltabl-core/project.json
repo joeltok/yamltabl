@@ -1,7 +1,7 @@
 {
-  "name": "yaml-table-core",
+  "name": "yamltabl-core",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/libs/yaml-table-core/src",
+  "sourceRoot": "packages/libs/yamltabl-core/src",
   "projectType": "library",
   "targets": {}
 }

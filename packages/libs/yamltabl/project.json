@@ -1,13 +1,13 @@
 {
-  "name": "yaml-table",
-  "sourceRoot": "packages/libs/yaml-table/src",
+  "name": "yamltabl",
+  "sourceRoot": "packages/libs/yamltabl/src",
   "projectType": "library",
   "targets": {
     "build:npm-package": {
       "executor": "nx:run-commands",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "command": "node packages/libs/yaml-table/tools/build-npm-package.js"
+        "command": "node packages/libs/yamltabl/tools/build-npm-package.js"
       }
     },
     "build:types": {
@@ -16,7 +16,7 @@
         { "target": "build:npm-package", "projects": "self" }
       ],
       "options": {
-        "command": "tsc -p packages/libs/yaml-table/tsconfig.types.json",
+        "command": "tsc -p packages/libs/yamltabl/tsconfig.types.json",
         "cwd": "."
       }
     },
@@ -27,10 +27,10 @@
       ],
       "options": {
         "commands": [
-          "cp packages/libs/yaml-table/package.json dist/packages/libs/yaml-table/package.json",
-          "cp packages/libs/yaml-table/README.md dist/packages/libs/yaml-table/README.md",
-          "cp LICENSE dist/packages/libs/yaml-table/LICENSE", 
-          "cp -r packages/libs/yaml-table/docs dist/packages/libs/yaml-table/docs"
+          "cp packages/libs/yamltabl/package.json dist/packages/libs/yamltabl/package.json",
+          "cp packages/libs/yamltabl/README.md dist/packages/libs/yamltabl/README.md",
+          "cp LICENSE dist/packages/libs/yamltabl/LICENSE", 
+          "cp -r packages/libs/yamltabl/docs dist/packages/libs/yamltabl/docs"
         ],
         "cwd": "."
       }
@@ -46,7 +46,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": [
-          "bash packages/libs/yaml-table/e2e/run-all.bash"
+          "bash packages/libs/yamltabl/e2e/run-all.bash"
         ],
         "cwd": "."
       },
@@ -61,7 +61,7 @@
       "cache": false,
       "options": {
         "commands": [
-          "cd dist/packages/libs/yaml-table && pnpm publish --registry=http://localhost:4873 --access public --no-git-checks --//localhost:4873/:_authToken=fake-token"
+          "cd dist/packages/libs/yamltabl && pnpm publish --registry=http://localhost:4873 --access public --no-git-checks --//localhost:4873/:_authToken=fake-token"
         ],
         "cwd": "."
       },

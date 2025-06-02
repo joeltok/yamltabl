@@ -19,7 +19,7 @@
   },
   "references": [
     {
-      "path": "../yaml-table-core"
+      "path": "../yamltabl-core"
     },
     {
       "path": "./tsconfig.lib.json"

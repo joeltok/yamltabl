@@ -10,8 +10,8 @@ const shared = {
 await Promise.all([
   // CLI
   build({
-    entryPoints: ['packages/libs/yaml-table/src/cli.ts'],
-    outfile: 'dist/packages/libs/yaml-table/cli/cli.cjs',
+    entryPoints: ['packages/libs/yamltabl/src/cli.ts'],
+    outfile: 'dist/packages/libs/yamltabl/cli/cli.cjs',
     format: 'cjs',
     external: ['fs', 'path', 'url'],
     ...shared
@@ -19,16 +19,16 @@ await Promise.all([
 
   // Lib (ESM)
   build({
-    entryPoints: ['packages/libs/yaml-table/src/index.ts'],
-    outfile: 'dist/packages/libs/yaml-table/lib/index.js',
+    entryPoints: ['packages/libs/yamltabl/src/index.ts'],
+    outfile: 'dist/packages/libs/yamltabl/lib/index.js',
     format: 'esm',
     ...shared
   }),
 
   // Lib (CJS)
   build({
-    entryPoints: ['packages/libs/yaml-table/src/index.ts'],
-    outfile: 'dist/packages/libs/yaml-table/lib/index.cjs',
+    entryPoints: ['packages/libs/yamltabl/src/index.ts'],
+    outfile: 'dist/packages/libs/yamltabl/lib/index.cjs',
     format: 'cjs',
     ...shared
   })

@@ -19,7 +19,7 @@ if (swcJestConfig.swcrc === undefined) {
 // swcJestConfig.module.noInterop = false;
 
 export default {
-  displayName: 'yaml-table',
+  displayName: 'yamltabl',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig],
@@ -27,5 +27,5 @@ export default {
   moduleFileExtensions: ['ts', 'js', 'html'],
   testMatch: ['**/src/**/*.(spec|test|e2e).ts'],
   testEnvironment: 'node',
-  coverageDirectory: '../../../coverage/packages/libs/yaml-table',
+  coverageDirectory: '../../../coverage/packages/libs/yamltabl',
 };

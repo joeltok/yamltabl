@@ -12,6 +12,6 @@ pnpm = "10.11.0"
 
 ```bash
 pnpm install
-pnpm exec nx run yaml-table-core:test # run tests
-pnpm exec nx run yaml-table:test # run tests
+pnpm exec nx run yamltabl-core:test # run tests
+pnpm exec nx run yamltabl:test # run tests
 ```

@@ -27,10 +27,10 @@ load '../../../../../node_modules/bats-assert/load'
 
 @test "publish yamltabl" {
   # Publish to verdaccio
-  pnpm exec nx run yaml-table:publish-npm
+  pnpm exec nx run yamltabl:publish-npm
 
   # Wait for package to become available in Verdaccio
-  echo "Waiting for yaml-table to be retrievable..." >> tmp/bats.log
+  echo "Waiting for yamltabl to be retrievable..." >> tmp/bats.log
   for i in {1..20}; do
     if curl -s http://localhost:4873/yamltabl | grep '"name": "yamltabl"' > /dev/null; then
       echo "Package is published and available" >> tmp/bats.log

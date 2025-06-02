@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import { Command } from 'commander';
 
-import { validateYamlTable } from '@yaml-table/yaml-table-core';
+import { validateYamlTable } from '@yamltabl/yamltabl-core';
 
 export function buildCommandValidate(program: Command) {
   program

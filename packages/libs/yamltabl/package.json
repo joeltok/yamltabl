@@ -1,14 +1,23 @@
 {
   "name": "yamltabl",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "type": "module",
   "main": "./lib/index.cjs",
   "module": "./lib/index.js",
   "types": "./lib/src/index.d.ts",
   "bin": {
-    "yamltabl": "./cli/cli.cjs"
+    "yamltabl": "./cli/cli.cjs",
+    "ytbl": "./cli/cli.cjs"
   },
   "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeltok/yamltabl"
+  },
+  "bugs": {
+    "url": "https://github.com/joeltok/yamltabl/issues"
+  },
+  "homepage": "https://github.com/joeltok/yamltabl/tree/main/packages/libs/yamltabl",
   "license": "MIT",
   "files": [
     "docs",

@@ -1,11 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist/packages/libs/yaml-table/lib"
+    "outDir": "dist/packages/libs/yamltabl/lib"
   },
   "references": [
     {
-      "path": "../yaml-table-core/tsconfig.lib.json"
+      "path": "../yamltabl-core/tsconfig.lib.json"
     }
   ],
   "include": [

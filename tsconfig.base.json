@@ -19,9 +19,9 @@
     "strict": true,
     "customConditions": ["development"],
     "paths": {
-      "@yaml-table/yaml-table": ["packages/libs/yaml-table/src/index.ts"],
-      "@yaml-table/yaml-table-core": [
-        "packages/libs/yaml-table-core/src/index.ts"
+      "@yamltabl/yamltabl": ["packages/libs/yamltabl/src/index.ts"],
+      "@yamltabl/yamltabl-core": [
+        "packages/libs/yamltabl-core/src/index.ts"
       ]
     }
   }

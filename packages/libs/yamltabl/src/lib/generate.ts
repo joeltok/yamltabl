@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import { Command } from 'commander';
 
-import { yamlTableToHTML, yamlTableToMd } from '@yaml-table/yaml-table-core';
+import { yamlTableToHTML, yamlTableToMd } from '@yamltabl/yamltabl-core';
 
 export function buildCommandGenerate(program: Command) {
   program

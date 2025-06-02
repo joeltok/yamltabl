@@ -12,7 +12,7 @@ const pkg = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8')
 const program = new Command()
 
 program
-  .name('yaml-table')
+  .name('yamltabl')
   .version(pkg.version)
   .description('A command line tool for converting yaml tables to html tables')
 
