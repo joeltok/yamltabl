@@ -7,10 +7,10 @@ import { minifyConfig } from './configs.js';
 
 export function parseYamlTableToJson(yamlString: string): IJsonInput {
   const jsonInputRaw = parse(yamlString);
-  const { yamltable, config, columns, ...rows } = jsonInputRaw;
+  const { yamltabl, config, columns, ...rows } = jsonInputRaw;
   const jsonTable = {
     metadata: {
-      yamltable,
+      yamltabl,
       config,
       columns,
     },

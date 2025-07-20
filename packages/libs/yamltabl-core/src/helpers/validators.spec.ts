@@ -16,7 +16,7 @@ describe('validateYamlTable', () => {
       expect(error).toBeInstanceOf(ValidationError);
       expect((error as ValidationError).message).toEqual('Validation failed');
       expect((error as ValidationError).issues).toEqual([
-        'missing field "yamltable"',
+        'missing field "yamltabl"',
         'missing field "columns"',
       ]);
     }
@@ -26,7 +26,7 @@ describe('validateYamlTable', () => {
 
   it('should validate that columns meet the schema', () => {
     const yamlString = `
-      yamltable: 1.0.0
+      yamltabl: 1.0.0
 
       columns:
         - Column 1
@@ -63,7 +63,7 @@ describe('validateYamlTable', () => {
 
   it('should validate that rows meet the schema', () => {
     const yamlString = `
-      yamltable: 1.0.0
+      yamltabl: 1.0.0
 
       columns:
         - column1: Column 1
@@ -95,7 +95,7 @@ describe('validateYamlTable', () => {
 
   it('should validate that row columns match those in the columns field', () => {
     const yamlString = `
-      yamltable: 1.0.0
+      yamltabl: 1.0.0
 
       columns:
         - column1: Column 1

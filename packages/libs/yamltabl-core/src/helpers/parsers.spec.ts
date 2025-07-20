@@ -6,7 +6,7 @@ import { minifyConfig } from './configs.js';
 describe('parseYamlTableString', () => {
   it('should parse a yaml table into json', () => {
     const yamlString = `
-      yamltable: 1.0.0
+      yamltabl: 1.0.0
 
       columns:
         - column1: Column 1
@@ -27,7 +27,7 @@ describe('parseYamlTableString', () => {
     const result = parseYamlTableToJson(yamlString);
     expect(result).toEqual({
       metadata: {
-        yamltable: '1.0.0',
+        yamltabl: '1.0.0',
         config: undefined,
         columns: [
           { column1: 'Column 1' },
@@ -55,7 +55,7 @@ describe('parseJsonTableToHtml', () => {
   it('should parse a json table into html', async () => {
     const jsonInput = {
       metadata: {
-        yamltable: '1.0.0',
+        yamltabl: '1.0.0',
         config: undefined,
         columns: [
           { column1: 'Column 1' },
@@ -122,7 +122,7 @@ describe('parseJsonTableToMd', () => {
   it('should parse a json table into markdown', async () => {
     const jsonInput = {
       metadata: {
-        yamltable: '1.0.0',
+        yamltabl: '1.0.0',
         config: undefined,
         columns: [
           { column1: 'Column 1' },

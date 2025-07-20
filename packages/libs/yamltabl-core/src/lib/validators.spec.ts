@@ -13,7 +13,7 @@ describe('validateYamlTable', () => {
       expect(error).toBeInstanceOf(ValidationError);
       expect((error as ValidationError).message).toEqual('Validation failed');
       expect((error as ValidationError).issues).toEqual([
-        'missing field "yamltable"',
+        'missing field "yamltabl"',
         'missing field "columns"',
       ]);
     }

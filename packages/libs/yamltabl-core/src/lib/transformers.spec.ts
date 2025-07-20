@@ -6,7 +6,7 @@ import { minifyConfig } from '../helpers/configs.js';
 describe('transformers', () => {
   it('should transform a yaml table into html', async () => {
     const yamlString = `
-      yamltable: 1.0.0
+      yamltabl: 1.0.0
 
       columns:
         - column1: Column 1

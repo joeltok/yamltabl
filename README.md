@@ -1,4 +1,4 @@
-# YamlTable
+# YamlTabl
 
 ## Setup and Installation
 
