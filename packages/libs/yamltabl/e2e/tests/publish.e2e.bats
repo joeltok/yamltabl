@@ -52,7 +52,7 @@ load '../../../../../node_modules/bats-assert/load'
   mkdir /tmp/test-install
   cd /tmp/test-install
   npm init -y
-  npm set registry http://localhost:4873/
+  npm set registry http://localhost:4873/ --location=project
 
   npm install yamltabl
   echo "const { yamlTableToHTML } = require('yamltabl')" > index.js; 
