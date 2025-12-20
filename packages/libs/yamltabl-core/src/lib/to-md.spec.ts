@@ -1,7 +1,7 @@
-import { yamlTableToMd } from './to-md.js';
+import { renderMd } from './to-md.js';
 
-describe('transformers', () => {
-  it('should transform a yaml table into md', async () => {
+describe('renderMd', () => {
+  it('should render yamltabl file into md', async () => {
     const yamlString = `
       yamltabl: 2.0.0
 
@@ -33,7 +33,7 @@ describe('transformers', () => {
 | Cell 1 | <b>bolded</b> | <ul> <li> list item 1 <li> list item 2</ul> | 
 `;
 
-    const result = await yamlTableToMd(yamlString);
+    const result = await renderMd(yamlString);
     expect(result).toEqual(expected);
   });
 });

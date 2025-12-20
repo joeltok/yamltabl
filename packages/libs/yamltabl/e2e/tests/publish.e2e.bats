@@ -55,11 +55,11 @@ load '../../../../../node_modules/bats-assert/load'
   npm set registry http://localhost:4873/ --location=project
 
   npm install yamltabl
-  echo "const { yamlTableToHTML } = require('yamltabl')" > index.js; 
-  echo "console.log(yamlTableToHTML)" >> index.js;
+  echo "const { renderHtml } = require('yamltabl')" > index.js; 
+  echo "console.log(renderHtml)" >> index.js;
   run node index.js
   assert_success
-  assert_output --partial '[AsyncFunction: yamlTableToHTML]'
+  assert_output --partial '[AsyncFunction: renderHtml]'
 }
 
 @test "should kill verdaccio" {

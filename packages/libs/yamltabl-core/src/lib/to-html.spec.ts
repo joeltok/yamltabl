@@ -1,10 +1,10 @@
 import { minify } from 'html-minifier-terser';
 
-import { yamlTableToHTML } from './to-html.js';
+import { renderHtml } from './to-html.js';
 import { minifyConfig } from '../helpers/configs.js';
 
-describe('transformers', () => {
-  it('should transform a yaml table into html', async () => {
+describe('renderHtml', () => {
+  it('should render yamltabl file into html', async () => {
     const yamlString = `
       yamltabl: 2.0.0
 
@@ -76,7 +76,7 @@ describe('transformers', () => {
     `;
     const minifiedHtmlString = await minify(htmlString, minifyConfig);
 
-    const htmlStringResult = await yamlTableToHTML(yamlString);
+    const htmlStringResult = await renderHtml(yamlString);
     expect(htmlStringResult).toEqual(minifiedHtmlString);
   });
 });

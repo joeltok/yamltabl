@@ -7,7 +7,7 @@ describe('parseJsonTableToHtml', () => {
   it('should parse a json table into html', async () => {
     const jsonInput = {
       metadata: {
-        yamltabl: '1.0.0',
+        yamltabl: '2.0.0',
         config: undefined,
         columns: [
           { column1: 'Column 1' },

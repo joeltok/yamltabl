@@ -13,7 +13,7 @@ const program = new Command()
 program
   .name('yamltabl')
   .version(pkg.version)
-  .description('A command line tool for converting yaml tables to html tables')
+  .description('A command line tool for converting structured yaml to html tables')
 
 buildCommandGenerate(program);
 

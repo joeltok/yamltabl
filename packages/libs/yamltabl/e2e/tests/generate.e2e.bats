@@ -3,7 +3,7 @@
 load '../../../../../node_modules/bats-support/load'
 load '../../../../../node_modules/bats-assert/load'
 
-@test "should error on an invalid yaml table configuration" {
+@test "should error on an invalid yamltabl configuration" {
   run node dist/packages/libs/yamltabl/cli/cli.cjs generate html -i packages/libs/yamltabl/e2e/data/invalid.input.yaml -o tmp/invalid.output.html
 
   assert_failure
@@ -13,7 +13,7 @@ load '../../../../../node_modules/bats-assert/load'
   assert_output --partial '"key | config | style" are protected and cannot be used as column keys'
 }
 
-@test "should generate html from a valid yaml table configuration" {
+@test "should generate html from a valid yamltabl configuration" {
   run node dist/packages/libs/yamltabl/cli/cli.cjs generate html -i packages/libs/yamltabl/e2e/data/valid.input.yaml -o tmp/valid.output.html
 
   assert_success
@@ -23,7 +23,7 @@ load '../../../../../node_modules/bats-assert/load'
   assert_success
 }
 
-@test "should generate markdown from a valid yaml table configuration" {
+@test "should generate markdown from a valid yamltabl configuration" {
   run node dist/packages/libs/yamltabl/cli/cli.cjs generate md -i packages/libs/yamltabl/e2e/data/valid.input.yaml -o tmp/valid.output.md
 
   assert_success

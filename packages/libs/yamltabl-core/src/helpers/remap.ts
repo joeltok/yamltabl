@@ -27,7 +27,7 @@ export function validateMetadata(metadata: IJsonInputMetadata): void {
   const errors = [];
 
   try {
-    validateYamltableField(metadata.yamltabl);
+    validateYamltablField(metadata.yamltabl);
   } catch (error) {
     errors.push((error as Error).message);
   }
@@ -42,9 +42,9 @@ export function validateMetadata(metadata: IJsonInputMetadata): void {
   }
 }
 
-function validateYamltableField(yamlField: string): void {
-  if (yamlField !== '1.0.0') {
-    throw new Error('missing field "yamltabl"');
+function validateYamltablField(yamlField: string): void {
+  if (yamlField !== '2.0.0') {
+    throw new Error('field "yamltabl" must use version 2.0.0');
   }
 }
 

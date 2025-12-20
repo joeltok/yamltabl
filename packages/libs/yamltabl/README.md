@@ -73,7 +73,7 @@ pnpm install yamltabl
 In your code:
 
 ```typescript
-import { yamlTableToHTML, yamlTableToMd } from 'yamltabl';
+import { renderHtml, renderMd } from 'yamltabl';
 
 const yamlString = `
   yamltabl: 2.0.0
@@ -94,10 +94,10 @@ const yamlString = `
       </ul>
 `;
 
-const htmlString = await yamlTableToHTML(yamlString);
+const htmlString = await renderHtml(yamlString);
 console.log(htmlString);
 
-const mdString = await yamlTableToMd(yamlString);
+const mdString = await renderMd(yamlString);
 console.log(mdString);
 ```
 

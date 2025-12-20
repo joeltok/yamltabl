@@ -3,10 +3,10 @@ import { parse } from 'yaml';
 import { remap, validateJsonTable, validateMetadata, validateRows, validateRowsMatchColumns } from './remap'
 import { ValidationError } from '../errors/errors.js';
 
-describe('parseYamlTableString', () => {
-  it('should parse a yaml table into json', () => {
+describe('remap', () => {
+  it('should remap', () => {
     const jsonInput = {
-      yamltabl: '1.0.0',
+      yamltabl: '2.0.0',
       config: undefined,
       columns: [
         { column1: 'Column 1' },
@@ -22,7 +22,7 @@ describe('parseYamlTableString', () => {
     const result = remap(jsonInput)
     const expected = {
       metadata: {
-        yamltabl: '1.0.0',
+        yamltabl: '2.0.0',
         config: undefined,
         columns: [
           { column1: 'Column 1' },
@@ -56,7 +56,7 @@ describe('validations', () => {
       expect(error).toBeInstanceOf(ValidationError);
       expect((error as ValidationError).message).toEqual('Validation failed');
       expect((error as ValidationError).issues).toEqual([
-        'missing field "yamltabl"',
+        'field "yamltabl" must use version 2.0.0',
         'missing field "columns"',
       ]);
     }
