@@ -13,22 +13,18 @@ columns:
 
 row1:
   column1: I am some text
-  column2: >
-    <ul>
-      <li> list item 1
-      <li> list item 2
-      <li> list item 3
-    </ul>
+  column2: 
+    - list item 1
+    - list item 2
+    - list item 3
   column3: I am also some text
 
 row2:
   column1: I am more text
-  column3: >
-    <ul>
-      <li> list item A
-      <li> list item B
-      <li> list item C
-    </ul>
+  column3: 
+    - list item A
+    - list item B
+    - list item C
 ```
 
 ## Markdown Table

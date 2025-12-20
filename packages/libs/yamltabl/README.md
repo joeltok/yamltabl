@@ -1,11 +1,11 @@
 # Yamltabl
 
-Yamltabl lets you define tables in YAML using a predictable schema — with Markdown/HTML output built-in.  
+Yamltabl lets you define tables in YAML using a predictable schema — and render to Markdown or HTML.  
 
 Perfect for everything-as-code documentation and static sites — without the messiness of raw Markdown or HTML tables.
 
 
-<!-- Vision: YAML as your table editor — powered by a predictable schema, with Markdown/HTML output built-in. -->
+<!-- Vision: YAML as your table editor — powered by a predictable schema, with built-in Markdown/HTML rendering -->
 
 
 ## Quick Example
@@ -18,34 +18,56 @@ Perfect for everything-as-code documentation and static sites — without the me
 yamltabl: 2.0.0
 
 columns:
-  - column1: Column 1
-  - column2: Column 2
-  - column3: Column 3
+  - haiku: Haiku Title
+  - line1: Line 1
+  - line2: Line 2
+  - line3: Line 3
 
 row1:
-  column1: I am some text
-  column2: >
-    <ul>
-      <li> list item 1
-      <li> list item 2
-      <li> list item 3
-    </ul>
-  column3: I am also some text
+  haiku: “The Old Pond” by Matsuo Bashō
+  line1: An old silent pond
+  line2: A frog jumps into the pond —
+  line3: Splash! Silence again.
 
 row2:
-  column1: I am more text
-  column3: >
-    <ul>
-      <li> list item A
-      <li> list item B
-      <li> list item C
-    </ul>
+  haiku: “A World of Dew” by Kobayashi Issa
+  line1: A world of dew,
+  line2: And within every dewdrop
+  line3: A world of struggle. 
 ```
 
 Yamltabl converts the YAML above into a Markdown-compatible table:
 
-<table><thead><tr><th id="column1">Column 1</th><th id="column2">Column 2</th><th id="column3">Column 3</th></tr></thead><tbody><tr id="row1"><td>I am some text</td><td>I am also some text</td><td><ul><li>list item 1</li><li>list item 2</li><li>list item 3</li></ul></td></tr><tr id="row2"><td>I am more text</td><td></td><td><ul><li>list item A</li><li>list item B</li><li>list item C</li></ul></td></tr></tbody></table>
-
+```html
+<table>
+  <thead>
+    <tr>
+      <th id="haiku">Haiku Title</th>
+      <th id="line1">Line 1</th>
+      <th id="line2">Line 2</th>
+      <th id="line3">Line 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="haiku">
+      <td>“The Old Pond” by Matsuo Bashō</td>
+      <td>“A World of Dew” by Kobayashi Issa</td>
+    </tr>
+    <tr id="line1">
+      <td>An old silent pond</td>
+      <td>A world of dew,</td>
+    </tr>
+    <tr id="line2">
+      <td>A frog jumps into the pond —</td>
+      <td>And within every dewdrop</td>
+    </tr>
+    <tr id="line3">
+      <td>Splash! Silence again.</td>
+      <td>A world of struggle. </td>
+    </tr>
+  </tbody>
+</table>
+```
 
 👉 See the [full schema specification](https://github.com/joeltok/yamltabl/blob/main/packages/libs/yamltabl/docs/schema.md) for a breakdown of each section.
 
@@ -107,7 +129,7 @@ console.log(mdString);
 
 ### HTML support
 
-All cells are converted into html, so any html renders.
+All cells are converted into html, so any html will renders.
 
 ```yaml
 row1:
@@ -162,4 +184,4 @@ row1:
       - child bullet point:
         - baby bullet point
         - baby bullet point
-``
+```
