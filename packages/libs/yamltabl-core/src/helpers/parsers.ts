@@ -2,7 +2,7 @@ import { parse } from 'yaml';
 import ejs from 'ejs';
 import { minify } from 'html-minifier-terser';
 
-import { IJsonInput } from '../types/types.js';
+import { IJsonInput, IJsonInputRows, Cell } from '../types/types.js';
 import { minifyConfig } from './configs.js';
 
 export function parseYamlTableToJson(yamlString: string): IJsonInput {
@@ -18,6 +18,25 @@ export function parseYamlTableToJson(yamlString: string): IJsonInput {
   };
   return jsonTable;
 }
+
+
+
+
+
+
+
+export function cellToHTML(cell: Cell) {
+
+}
+
+export function formatAllCellsAsHTML(row: IJsonInputRows) {
+
+}
+
+
+
+
+
 
 export async function parseJsonTableToHtml(
   jsonInput: IJsonInput

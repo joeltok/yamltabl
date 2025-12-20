@@ -3,16 +3,23 @@ export interface IJsonInput {
   rows: IJsonInputRows;
 }
 
-export interface IJsonInputRows {
-  [key: string]: IJsonInputRow;
-}
-
-export interface IJsonInputRow {
-  [key: string]: string;
-}
-
 export interface IJsonInputMetadata {
   yamltabl: string;
   config?: {};
   columns: {}[];
 }
+
+export interface IJsonInputRows {
+  [key: string]: IJsonInputRow;
+}
+
+export interface IJsonInputRow {
+  [key: string]: Cell;
+}
+
+
+export type Cell = 
+  | string 
+  | string[] 
+  | { [key: string]: Cell } 
+  | Cell[];
