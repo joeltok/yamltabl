@@ -6,7 +6,7 @@ import { minifyConfig } from '../helpers/configs.js';
 describe('transformers', () => {
   it('should transform a yaml table into html', async () => {
     const yamlString = `
-      yamltabl: 1.0.0
+      yamltabl: 2.0.0
 
       columns:
         - column1: Column 1
@@ -16,14 +16,15 @@ describe('transformers', () => {
       row_1:
         column1: Cell A
         column2: Cell B
-        column3: >
-          <ul>
-            <li> list item 1
-            <li> list item 2
-            <li> list item 3
-          </ul>
+        column3: 
+          - list item 1
+          - list item 2
+          - parent:
+            - child:
+              - baby
       row_2:
         column1: Cell 1
+        column2: <b>bolded</b>
         column3: >
           <ul>
             <li> list item 1
@@ -48,13 +49,21 @@ describe('transformers', () => {
               <ul>
                 <li>list item 1</li>
                 <li>list item 2</li>
-                <li>list item 3</li>
+                <li>parent
+                  <ul>
+                    <li>child
+                      <ul>
+                        <li>baby</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </td>
           </tr>
           <tr id="row_2">
             <td>Cell 1</td>
-            <td></td>
+            <td><b>bolded</b></td>
             <td>
               <ul>
                 <li>list item 1</li>

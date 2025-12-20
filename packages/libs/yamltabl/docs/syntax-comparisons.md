@@ -4,7 +4,7 @@
 ## Yamltabl
 
 ```yaml
-yamltabl: 1.0.0
+yamltabl: 2.0.0
 
 columns:
   - column1: Column 1

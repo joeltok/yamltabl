@@ -26,19 +26,11 @@ export function reformatCell(node: Cell): string {
   const bullet = Object.keys(node)[0]
   const subbullets = node[bullet]
   const ejsTemplate = `
-    <li>
-      <%- bullet -%>
-      <%- reformatCell(subbullets) -%>
-    </li>
+    <%- bullet -%>
+    <%- reformatCell(subbullets) -%>
   `
   return ejs.render(ejsTemplate, { bullet, subbullets, reformatCell });
 }
-
-
-// export type Cell = 
-//   | string 
-//   | Cell[]
-//   | { [key: string]: Cell };
 
 export function reformatCells(table: Pick<IJsonInput, 'rows'>): IJsonInput {
   Object.keys(table.rows).forEach((rowKey) => {
@@ -49,14 +41,12 @@ export function reformatCells(table: Pick<IJsonInput, 'rows'>): IJsonInput {
       row[columnKey] = reformatCell(cell)
     })
   })
-
   return table as IJsonInput;
 }
 
 export const CellSchema: v.GenericSchema<Cell> = v.lazy(() => 
   v.union([
     v.string(),
-    v.array(v.string()),
     v.record(v.string(), v.lazy(() => CellSchema)),
     v.array(v.lazy(() => CellSchema))
   ], ({ input }) => `cell "${input}" is not of the expected format`)

@@ -3,22 +3,32 @@
 load '../../../../../node_modules/bats-support/load'
 load '../../../../../node_modules/bats-assert/load'
 
+@test "should error on an invalid yaml table configuration" {
+  run node dist/packages/libs/yamltabl/cli/cli.cjs generate html -i packages/libs/yamltabl/e2e/data/invalid.input.yaml -o tmp/invalid.output.html
+
+  assert_failure
+  assert_output --partial 'Validation failed'
+  assert_output --partial 'column "Column 1" needs to be a key-value pair'
+  assert_output --partial '"key | config | style" are protected and cannot be used as column keys'
+  assert_output --partial '"key | config | style" are protected and cannot be used as column keys'
+}
+
 @test "should generate html from a valid yaml table configuration" {
-  run node dist/packages/libs/yamltabl/cli/cli.cjs generate html -i packages/libs/yamltabl/e2e/data/good.input.yaml -o tmp/good.output.html
+  run node dist/packages/libs/yamltabl/cli/cli.cjs generate html -i packages/libs/yamltabl/e2e/data/valid.input.yaml -o tmp/valid.output.html
 
   assert_success
 
-  run diff packages/libs/yamltabl/e2e/data/good.output.html tmp/good.output.html
+  run diff tmp/valid.output.html packages/libs/yamltabl/e2e/data/valid.output.html
 
   assert_success
 }
 
 @test "should generate markdown from a valid yaml table configuration" {
-  run node dist/packages/libs/yamltabl/cli/cli.cjs generate md -i packages/libs/yamltabl/e2e/data/good.input.yaml -o tmp/good.output.md
+  run node dist/packages/libs/yamltabl/cli/cli.cjs generate md -i packages/libs/yamltabl/e2e/data/valid.input.yaml -o tmp/valid.output.md
 
   assert_success
 
-  run diff packages/libs/yamltabl/e2e/data/good.output.md tmp/good.output.md
+  run diff tmp/valid.output.md packages/libs/yamltabl/e2e/data/valid.output.md
 
   assert_success
 }

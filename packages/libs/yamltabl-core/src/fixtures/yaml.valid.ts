@@ -1,5 +1,5 @@
 export const validBase = `
-  yamltabl: 1.0.0
+  yamltabl: 2.0.0
 
   columns:
     - column1: Column 1
@@ -25,7 +25,7 @@ export const validBase = `
 `;
 
 export const validBulletPoints = `
-  yamltabl: 1.0.0
+  yamltabl: 2.0.0
 
   columns:
     - column1: Column 1

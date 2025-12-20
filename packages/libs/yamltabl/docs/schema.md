@@ -7,7 +7,7 @@ Yamltabl uses a simple, predictable YAML schema to define tables. This document 
 ## Required Field: `yamltabl`
 
 ```yaml
-yamltabl: 1.0.0
+yamltabl: 2.0.0
 ```
 
 * This is a required field and must appear at the top of every file.
@@ -79,7 +79,7 @@ rowkey2:
 ## Full Example
 
 ```yaml
-yamltabl: 1.0.0
+yamltabl: 2.0.0
 
 columns:
   - product: Product

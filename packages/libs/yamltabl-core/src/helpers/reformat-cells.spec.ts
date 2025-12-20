@@ -68,7 +68,7 @@ describe('reformatCell', () => {
     expect(minify(result)).toEqual(minify(expected))
   })
 
-  it('multi-level bullet points: converted to html', () => {
+  it('double-level bullet points: converted to html', () => {
     const cell = [
       { 
         'parent bullet point': [
@@ -95,6 +95,82 @@ describe('reformatCell', () => {
           <ul>
             <li>child bullet point</li>
             <li>child bullet point</li>
+          </ul
+        </li>
+      </ul>
+    `;
+
+    const result = reformatCell(cell) 
+    expect(minify(result)).toEqual(minify(expected))
+  })
+
+  it('tri-level bullet points: converted to html', () => {
+    const cell = [
+      { 
+        'parent bullet point': [
+          { 
+            'child bullet point': [
+              'baby bullet point',
+              'baby bullet point',
+            ]
+          },
+          { 
+            'child bullet point': [
+              'baby bullet point',
+              'baby bullet point',
+            ]
+          },
+        ],
+      },
+      {
+        'parent bullet point': [
+          { 
+            'child bullet point': [
+              'baby bullet point',
+              'baby bullet point',
+            ]
+          },
+          { 
+            'child bullet point': [
+              'baby bullet point',
+              'baby bullet point',
+            ]
+          },
+        ]
+      }
+    ]
+    const expected = `
+      <ul>
+        <li>parent bullet point
+          <ul>
+            <li>child bullet point
+              <ul>
+                <li>baby bullet point</li>
+                <li>baby bullet point</li>
+              </ul>
+            </li>
+            <li>child bullet point
+              <ul>
+                <li>baby bullet point</li>
+                <li>baby bullet point</li>
+              </ul>
+            </li>
+          </ul
+        </li>
+        <li>parent bullet point
+          <ul>
+            <li>child bullet point
+              <ul>
+                <li>baby bullet point</li>
+                <li>baby bullet point</li>
+              </ul>
+            </li>
+            <li>child bullet point
+              <ul>
+                <li>baby bullet point</li>
+                <li>baby bullet point</li>
+              </ul>
+            </li>
           </ul
         </li>
       </ul>

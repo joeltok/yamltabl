@@ -64,7 +64,7 @@ describe('validations', () => {
 
   it('should validate that columns meet the schema', () => {
     const yamlString = `
-      yamltabl: 1.0.0
+      yamltabl: 2.0.0
 
       columns:
         - Column 1
@@ -101,7 +101,7 @@ describe('validations', () => {
 
   it('should validate that rows meet the schema', () => {
     const yamlString = `
-      yamltabl: 1.0.0
+      yamltabl: 2.0.0
 
       columns:
         - column1: Column 1
@@ -133,7 +133,7 @@ describe('validations', () => {
 
   it('should validate that row columns match those in the columns field', () => {
     const yamlString = `
-      yamltabl: 1.0.0
+      yamltabl: 2.0.0
 
       columns:
         - column1: Column 1
