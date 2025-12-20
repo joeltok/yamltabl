@@ -1,9 +1,9 @@
 import * as v from 'valibot';
 
-import { IJsonInput, IJsonInputMetadata, IJsonInputRows } from '../types/types.js';
+import { JsonTable, Metadata, Rows } from '../types/types.js';
 import { ValidationError } from '../errors/errors.js';
 
-export function remap(jsonInput: any): IJsonInput {
+export function remap(jsonInput: any): JsonTable {
   const { yamltabl, config, columns, ...rows } = jsonInput;
   const jsonTable = {
     metadata: {
@@ -17,13 +17,13 @@ export function remap(jsonInput: any): IJsonInput {
   return jsonTable;
 }
 
-export function validateJsonTable({ metadata, rows }: IJsonInput): void {
+export function validateJsonTable({ metadata, rows }: JsonTable): void {
   validateMetadata(metadata);
   validateRows(rows);
   validateRowsMatchColumns(rows, metadata.columns);
 }
 
-export function validateMetadata(metadata: IJsonInputMetadata): void {
+export function validateMetadata(metadata: Metadata): void {
   const errors = [];
 
   try {
@@ -79,7 +79,7 @@ const ColumnsSchema = v.array(
   'missing field "columns"'
 );
 
-export function validateRows(rows: IJsonInputRows): void {
+export function validateRows(rows: Rows): void {
   const errors: string[] = [];
 
   const result = v.safeParse(RowsSchema, rows);
@@ -111,7 +111,7 @@ const RowKeySchema = v.pipe(
 const RowsSchema = v.pipe(v.record(RowKeySchema, RowSchema));
 
 export function validateRowsMatchColumns(
-  rows: IJsonInputRows,
+  rows: Rows,
   columns: { [key: string]: string }[]
 ): void {
   const columnsHash: { [key: string]: boolean } = {};

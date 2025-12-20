@@ -1,8 +1,8 @@
 import ejs from 'ejs';
 
-import { IJsonInput } from '../types/types.js';
+import { JsonTable } from '../types/types.js';
 
-export async function jsonToMd(jsonInput: IJsonInput): Promise<string> {
+export async function jsonToMd(jsonTable: JsonTable): Promise<string> {
   const ejsTemplate = `
 | <% metadata.columns.forEach(c => { %><%= Object.values(c)[0] %> | <% }) %>
 | <% metadata.columns.forEach(() => { %>---| <% }) %>
@@ -21,8 +21,8 @@ export async function jsonToMd(jsonInput: IJsonInput): Promise<string> {
       .trim();
 
   return ejs.render(ejsTemplate.trim(), {
-    metadata: jsonInput.metadata,
-    rows: jsonInput.rows,
+    metadata: jsonTable.metadata,
+    rows: jsonTable.rows,
     sanitize,
   });
 }

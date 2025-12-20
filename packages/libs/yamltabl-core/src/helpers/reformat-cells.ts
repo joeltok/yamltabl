@@ -1,7 +1,7 @@
 import * as v from 'valibot';
 import ejs from 'ejs';
 
-import { IJsonInput, Cell } from '../types/types'
+import { JsonTable, Cell } from '../types/types'
 import { ValidationError } from '../errors/errors.js';
 
 
@@ -32,7 +32,7 @@ export function reformatCell(node: Cell): string {
   return ejs.render(ejsTemplate, { bullet, subbullets, reformatCell });
 }
 
-export function reformatCells(table: Pick<IJsonInput, 'rows'>): IJsonInput {
+export function reformatCells(table: Pick<JsonTable, 'rows'>): JsonTable {
   Object.keys(table.rows).forEach((rowKey) => {
     const row = table.rows[rowKey]
     Object.keys(row).forEach((columnKey) => {
@@ -41,7 +41,7 @@ export function reformatCells(table: Pick<IJsonInput, 'rows'>): IJsonInput {
       row[columnKey] = reformatCell(cell)
     })
   })
-  return table as IJsonInput;
+  return table as JsonTable;
 }
 
 export const CellSchema: v.GenericSchema<Cell> = v.lazy(() => 

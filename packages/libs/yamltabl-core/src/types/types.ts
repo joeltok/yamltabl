@@ -1,22 +1,21 @@
-export interface IJsonInput {
-  metadata: IJsonInputMetadata;
-  rows: IJsonInputRows;
+export interface JsonTable {
+  metadata: Metadata;
+  rows: Rows;
 }
 
-export interface IJsonInputMetadata {
+export interface Metadata {
   yamltabl: string;
   config?: {};
   columns: {}[];
 }
 
-export interface IJsonInputRows {
-  [key: string]: IJsonInputRow;
+export interface Rows {
+  [key: string]: Row;
 }
 
-export interface IJsonInputRow {
+export interface Row {
   [key: string]: Cell;
 }
-
 
 export type Cell = 
   | string 
