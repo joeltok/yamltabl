@@ -1,7 +1,6 @@
 import { minify } from 'html-minifier-terser';
 
-import { parseYamlTableToJson, formatAllCellsAsHTML, cellToHTML, parseJsonTableToHtml, parseJsonTableToMd } from './parsers.js';
-import { Cell } from '../types/types.js'
+import { parseYamlTableToJson, parseJsonTableToHtml, parseJsonTableToMd } from './parsers.js';
 import { minifyConfig } from './configs.js';
 
 describe('parseYamlTableString', () => {

@@ -3,13 +3,13 @@ import { parse } from 'yaml';
 import { remap } from '../helpers/remap';
 import { reformatCells } from '../helpers/reformat-cells';
 import { validateJsonTable } from '../helpers/validators';
-import { parseJsonTableToHtml } from '../helpers/parsers.js';
+import { parseJsonTableToMd } from '../helpers/parsers.js';
 
-export async function yamlTableToHTML(yamlTableString: string): Promise<string>  {
+export async function yamlTableToMd(yamlTableString: string): Promise<string>  {
   const jsonInput = parse(yamlTableString);
   const jsonTableRemapped = remap(jsonInput)
   validateJsonTable(jsonTableRemapped);
   const jsonTableFormatted = reformatCells(jsonTableRemapped)
 
-  return await parseJsonTableToHtml(jsonTableFormatted);  
+  return await parseJsonTableToMd(jsonTableFormatted);  
 }

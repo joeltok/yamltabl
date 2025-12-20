@@ -1,0 +1,40 @@
+import { yamlTableToMd } from './to-md.js';
+
+describe('transformers', () => {
+  it('should transform a yaml table into md', async () => {
+    const yamlString = `
+      yamltabl: 1.0.0
+
+      columns:
+        - column1: Column 1
+        - column2: Column 2
+        - column3: Column 3
+
+      row_1:
+        column1: Cell A
+        column2: Cell B
+        column3: >
+          <ul>
+            <li> list item 1
+            <li> list item 2
+            <li> list item 3
+          </ul>
+      row_2:
+        column1: Cell 1
+        column3: >
+          <ul>
+            <li> list item 1
+            <li> list item 2
+          </ul>
+    `;
+
+    const expected = `| Column 1 | Column 2 | Column 3 | 
+| ---| ---| ---| 
+| Cell A | Cell B | <ul> <li> list item 1 <li> list item 2 <li> list item 3</ul> | 
+| Cell 1 |  | <ul> <li> list item 1 <li> list item 2</ul> | 
+`;
+
+    const result = await yamlTableToMd(yamlString);
+    expect(result).toEqual(expected);
+  });
+});

@@ -22,8 +22,6 @@ describe('validateYamlTable', () => {
     }
   });
 
-  it.skip('should validate that table configurations are supported', () => {});
-
   it('should validate that columns meet the schema', () => {
     const yamlString = `
       yamltabl: 1.0.0
