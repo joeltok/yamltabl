@@ -94,7 +94,7 @@ export function validateRows(rows: IJsonInputRows): void {
 
 const RowSchema = v.record(
   v.string(),
-  v.string(),
+  v.any(), // validation happens during cell reformatting
   ({ input }) => `expected "${input}" to be a list of key-value pairs`
 );
 

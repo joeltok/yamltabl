@@ -20,6 +20,5 @@ export interface IJsonInputRow {
 
 export type Cell = 
   | string 
-  | string[] 
-  | { [key: string]: Cell } 
-  | Cell[];
+  | Cell[]
+  | { [key: string]: Cell };
