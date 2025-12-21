@@ -1,0 +1,25 @@
+{
+  "name": "helloworld",
+  "type": "module",
+  "displayName": "HelloWorld",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./lib/index.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "helloworld.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "scripts": {},
+  "devDependencies": {}
+}

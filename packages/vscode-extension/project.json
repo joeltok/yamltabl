@@ -1,0 +1,28 @@
+{
+  "name": "yamltabl-vscode-extension",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/vscode-extension/src",
+  "projectType": "library",
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build:meta",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "commands": [
+          "node packages/vscode-extension/tools/build.js --watch",
+          "sleep 1 && cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json",
+          "sleep 2 && code packages/vscode-extension/samples --extensionDevelopmentPath=${PWD}/dist/packages/vscode-extension"
+        ],
+        "parallel": true
+      }
+    },
+    "build:types": {},
+    "build": {},
+    "test": {}
+  }
+}
