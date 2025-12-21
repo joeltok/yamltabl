@@ -1,7 +1,0 @@
-{
-  "name": "yamltabl-core",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/libs/yamltabl-core/src",
-  "projectType": "library",
-  "targets": {}
-}

@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "rootDir": "packages/libs",
+    "outDir": "../../dist/packages/npm-package/lib"
+  },
+  "include": [
+    "packages/npm-package/src/**/*.ts",
+    "packages/npm-package-core/src/**/*.ts"
+  ],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.e2e.ts"]
+}

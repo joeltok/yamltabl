@@ -1,0 +1,8 @@
+{
+  "name": "yamltabl-core",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/core/src",
+  "projectType": "library",
+  "// targets": "to see all targets run: nx show project yamltabl-core --web",
+  "targets": {}
+}

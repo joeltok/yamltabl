@@ -130,10 +130,6 @@ importers:
         specifier: ^6.1.2
         version: 6.1.2(typanion@3.14.0)
 
-  packages/libs/yaml-table: {}
-
-  packages/libs/yaml-table-core: {}
-
 packages:
 
   '@ampproject/remapping@2.3.0':

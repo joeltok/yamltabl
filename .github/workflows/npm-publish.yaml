@@ -21,7 +21,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: yamltabl-dist 
-          path: dist/packages/libs/yamltabl
+          path: dist/packages/npm-package
 
   test:
     runs-on: ubuntu-latest
@@ -38,9 +38,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: yamltabl-dist
-          path: dist/packages/libs/yamltabl
+          path: dist/packages/npm-package
       - name: Smoke test guard against node_modules dependency in production
-        run: node dist/packages/libs/yamltabl/cli/cli.cjs --help 
+        run: node dist/packages/npm-package/cli/cli.cjs --help 
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yamltabl-core:test
       - run: pnpm exec nx run yamltabl:test --skip-nx-cache --skip-dependencies
@@ -60,11 +60,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: yamltabl-dist
-          path: dist/packages/libs/yamltabl
+          path: dist/packages/npm-package
       - run: pnpm install --frozen-lockfile
       - name: Create .npmrc for publishing to npmjs.com
         run: echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
       - name: Publish to npm
-        run: pnpm publish dist/packages/libs/yamltabl --access public --no-git-checks
+        run: pnpm publish dist/packages/npm-package --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}

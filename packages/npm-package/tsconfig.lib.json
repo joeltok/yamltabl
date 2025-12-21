@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/packages/npm-package/lib"
+  },
+  "references": [
+    {
+      "path": "../yamltabl-core/tsconfig.lib.json"
+    }
+  ],
+  "include": [],
+  "exclude": []
+}

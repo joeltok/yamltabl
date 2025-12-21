@@ -1,0 +1,89 @@
+{
+  "name": "yamltabl",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/npm-package/src",
+  "projectType": "library",
+  "targets": {
+    "build:npm-package": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "command": "node packages/npm-package/tools/build-npm-package.js"
+      }
+    },
+    "build:types": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build:npm-package",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "command": "tsc -p packages/npm-package/tsconfig.types.json",
+        "cwd": "."
+      }
+    },
+    "build:meta": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build:npm-package",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "commands": [
+          "cp packages/npm-package/package.json dist/packages/npm-package/package.json",
+          "cp packages/npm-package/README.md dist/packages/npm-package/README.md",
+          "cp LICENSE dist/packages/npm-package/LICENSE",
+          "cp -r packages/npm-package/docs dist/packages/npm-package/docs"
+        ],
+        "cwd": "."
+      }
+    },
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": [
+        {
+          "target": "build:meta",
+          "projects": "self"
+        },
+        {
+          "target": "build:types",
+          "projects": "self"
+        }
+      ]
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": ["bash packages/npm-package/e2e/run-all.bash"],
+        "cwd": "."
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "publish-npm": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "cache": false,
+      "options": {
+        "commands": [
+          "cd dist/packages/npm-package && pnpm publish --registry=http://localhost:4873 --access public --no-git-checks --//localhost:4873/:_authToken=fake-token"
+        ],
+        "cwd": "."
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    }
+  }
+}
