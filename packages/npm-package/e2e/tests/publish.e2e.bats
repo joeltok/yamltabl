@@ -11,7 +11,7 @@ load '../../../../node_modules/bats-assert/load'
 
   # Setup Verdaccio to publish the project locally
   echo "🔧 setting up test env" > tmp/bats.log
-  pnpm exec verdaccio --config config/verdaccio.config.yml &
+  pnpm exec verdaccio --config packages/npm-package/e2e/configs/verdaccio.config.yml &
   echo "verdaccio started" >> tmp/bats.log
 
   echo "Waiting for Verdaccio to be ready..." >> tmp/bats.log
@@ -27,7 +27,7 @@ load '../../../../node_modules/bats-assert/load'
 
 @test "publish yamltabl" {
   # Publish to verdaccio
-  pnpm exec nx run yamltabl:publish-npm
+  pnpm exec nx run yamltabl-npm-package:publish-npm
 
   # Wait for package to become available in Verdaccio
   echo "Waiting for yamltabl to be retrievable..." >> tmp/bats.log

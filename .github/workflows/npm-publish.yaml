@@ -16,7 +16,7 @@ jobs:
         with:
           version: 10
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec nx run yamltabl:build
+      - run: pnpm exec nx run yamltabl-npm-package:build
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
@@ -43,7 +43,7 @@ jobs:
         run: node dist/packages/npm-package/cli/cli.cjs --help 
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yamltabl-core:test
-      - run: pnpm exec nx run yamltabl:test --skip-nx-cache --skip-dependencies
+      - run: pnpm exec nx run yamltabl-npm-package:test --skip-nx-cache --skip-dependencies
 
   publish-npm:
     needs: test

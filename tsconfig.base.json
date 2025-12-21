@@ -19,7 +19,7 @@
     "strict": true,
     "customConditions": ["development"],
     "paths": {
-      "@yamltabl/yamltabl": ["packages/npm-package/src/index.ts"],
+      "@yamltabl/yamltabl-npm-package": ["packages/npm-package/src/index.ts"],
       "@yamltabl/yamltabl-core": ["packages/core/src/index.ts"]
     }
   }
