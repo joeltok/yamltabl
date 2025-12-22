@@ -8,12 +8,6 @@
   },
   "main": "./lib/index.cjs",
   "contributes": {
-    "markdown.markdownItPlugins": true,
-    "commands": [
-      {
-        "command": "helloworld.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "markdown.markdownItPlugins": true
   }
 }

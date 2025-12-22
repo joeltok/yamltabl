@@ -1,15 +1,22 @@
 import * as assert from 'assert';
+import * as path from 'path';
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
 import * as vscode from 'vscode';
-// import * as myExtension from '../../extension';
 
-suite('Extension Test Suite', () => {
+suite('Markdown Preview Yamltabl Support', () => {
 	vscode.window.showInformationMessage('Start all tests.');
 
-	test('Sample test', () => {
-		assert.strictEqual(-1, [1, 2, 3].indexOf(5));
-		assert.strictEqual(-1, [1, 2, 3].indexOf(0));
+	test('Open basic.md and markdown preview', async () => {
+		const uri = vscode.Uri.file(
+      path.join(__dirname, '../samples/fixtures/basic.md')
+    );
+
+    const doc = await vscode.workspace.openTextDocument(uri);
+    await vscode.window.showTextDocument(doc);
+    await vscode.commands.executeCommand('markdown.showPreviewToSide', uri);
+
+
+		await new Promise(resolve => setTimeout(resolve, 5000)); 
+		// await new Promise(() => {}); // for extended debugging
 	});
 });
