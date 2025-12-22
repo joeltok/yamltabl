@@ -1,4 +1,4 @@
-name: NPM Package Publish
+name: VSCode Extension Publish
 
 on:
   push:
@@ -16,12 +16,12 @@ jobs:
         with:
           version: 10
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec nx run yamltabl-npm-package:build
+      - run: pnpm exec nx run yamltabl-vscode-extension:build
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: yamltabl-dist 
-          path: dist/packages/npm-package
+          path: dist/packages/vscode-extension
 
   test:
     runs-on: ubuntu-latest
@@ -38,14 +38,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: yamltabl-dist
-          path: dist/packages/npm-package
-      - name: Smoke test guard against node_modules dependency in production
-        run: node dist/packages/npm-package/cli/cli.cjs --help 
+          path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yamltabl-core:test
-      - run: pnpm exec nx run yamltabl-npm-package:test --skip-nx-cache --skip-dependencies
+      - run: pnpm exec nx run yamltabl-vscode:test --skip-nx-cache --skip-dependencies
 
-  publish-npm:
+  publish-vscode-extension:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -60,11 +58,5 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: yamltabl-dist
-          path: dist/packages/npm-package
+          path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
-      - name: Create .npmrc for publishing to npmjs.com
-        run: echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
-      - name: Publish to npm
-        run: pnpm publish dist/packages/npm-package --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}

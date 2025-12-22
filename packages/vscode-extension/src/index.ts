@@ -7,11 +7,17 @@ export function activate(context: vscode.ExtensionContext) {
       const defaultRender = md.renderer.rules.fence;
 
       md.renderer.rules.fence = (tokens: any[], idx: number, options: any, env: any, self: any) => {
-        const token = tokens[idx];
-        
+        const token = tokens[idx];        
         if (token.info === 'yamltabl') {
-
-          return renderHtml(token.content)
+          try {
+            return renderHtml(token.content)
+          } catch (err) {
+            let errMessage = "Yamltabl Errors:<br>"
+            err.issues.forEach(issue => {
+              errMessage = errMessage + `- ${issue}<br>`
+            })
+            return errMessage
+          }
         }
 
         return defaultRender(tokens, idx, options, env, self);

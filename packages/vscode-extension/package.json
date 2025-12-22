@@ -1,5 +1,6 @@
 {
   "name": "yamltabl-extension",
+  "publisher": "yamltabl",
   "type": "module",
   "displayName": "Yamltabl",
   "version": "0.0.1",

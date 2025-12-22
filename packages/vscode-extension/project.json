@@ -4,6 +4,20 @@
   "sourceRoot": "packages/vscode-extension/src",
   "projectType": "library",
   "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "node packages/vscode-extension/tools/build-src.js",
+          "mkdir -p dist/packages/vscode-extension/samples/fixtures",
+          "cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json",
+          "cp packages/vscode-extension/samples/fixtures/basic.md dist/packages/vscode-extension/samples/fixtures/basic.md",
+          "node packages/vscode-extension/tools/build-e2e.js",
+          "vscode-test --config packages/vscode-extension/.vscode-test.mjs"
+        ],
+        "parallel": false
+      }
+    },
     "dev": {
       "executor": "nx:run-commands",
       "options": {
@@ -24,20 +38,6 @@
           "cp packages/vscode-extension/samples/fixtures/* packages/vscode-extension/samples/playground/",
           "cp packages/vscode-extension/README.md packages/vscode-extension/README.md",
           "cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json"
-        ],
-        "parallel": false
-      }
-    },
-    "test": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "node packages/vscode-extension/tools/build-src.js",
-          "mkdir -p dist/packages/vscode-extension/samples/fixtures",
-          "cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json",
-          "cp packages/vscode-extension/samples/fixtures/basic.md dist/packages/vscode-extension/samples/fixtures/basic.md",
-          "node packages/vscode-extension/tools/build-e2e.js",
-          "vscode-test --config packages/vscode-extension/.vscode-test.mjs"
         ],
         "parallel": false
       }
