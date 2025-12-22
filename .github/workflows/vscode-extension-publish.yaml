@@ -41,7 +41,7 @@ jobs:
           path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yamltabl-core:test
-      - run: pnpm exec nx run yamltabl-vscode:test --skip-nx-cache --skip-dependencies
+      - run: pnpm exec nx run yamltabl-vscode-extension:test --skip-nx-cache --skip-dependencies
 
   publish-vscode-extension:
     needs: test
@@ -60,3 +60,4 @@ jobs:
           name: yamltabl-dist
           path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
+      - run: cd dist && vsce package
