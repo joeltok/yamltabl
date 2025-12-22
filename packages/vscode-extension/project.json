@@ -14,6 +14,7 @@
       ],
       "options": {
         "commands": [
+          "mkdir -p tmp",
           "node packages/vscode-extension/tools/build-e2e.js",
           "vscode-test --config packages/vscode-extension/.vscode-test.mjs"
         ],
