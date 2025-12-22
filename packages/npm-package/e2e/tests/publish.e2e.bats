@@ -59,7 +59,7 @@ load '../../../../node_modules/bats-assert/load'
   echo "console.log(renderHtml)" >> index.js;
   run node index.js
   assert_success
-  assert_output --partial '[AsyncFunction: renderHtml]'
+  assert_output --partial '[Function: renderHtml]'
 }
 
 @test "should kill verdaccio" {

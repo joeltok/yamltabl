@@ -32,7 +32,7 @@ describe('parseJsonTableToMd', () => {
 | Cell 1 |  | <ul> <li> list item 1 <li> list item 2</ul> | 
 `;
 
-    const markdownStringResult = await jsonToMd(jsonInput);
+    const markdownStringResult = jsonToMd(jsonInput);
     expect(markdownStringResult).toEqual(markdownString);
   });
 });

@@ -76,7 +76,7 @@ describe('renderHtml', () => {
     `;
     const minifiedHtmlString = await minify(htmlString, minifyConfig);
 
-    const htmlStringResult = await renderHtml(yamlString);
+    const htmlStringResult = await minify(renderHtml(yamlString), minifyConfig);
     expect(htmlStringResult).toEqual(minifiedHtmlString);
   });
 });

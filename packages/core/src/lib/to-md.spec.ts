@@ -33,7 +33,7 @@ describe('renderMd', () => {
 | Cell 1 | <b>bolded</b> | <ul> <li> list item 1 <li> list item 2</ul> | 
 `;
 
-    const result = await renderMd(yamlString);
+    const result = renderMd(yamlString);
     expect(result).toEqual(expected);
   });
 });

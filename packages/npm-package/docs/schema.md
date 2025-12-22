@@ -2,7 +2,6 @@
 
 Yamltabl uses a simple, predictable YAML schema to define tables. This document describes the structure and rules of that schema.
 
----
 
 ## Required Field: `yamltabl`
 
@@ -13,7 +12,6 @@ yamltabl: 2.0.0
 - This is a required field and must appear at the top of every file.
 - It indicates the version of the schema being used.
 
----
 
 ## Required Field: `columns`
 
@@ -30,7 +28,6 @@ columns:
 - The **value** is the label that appears in the rendered table header.
 - All keys must be unique.
 
----
 
 ## Reserved Field: `config`
 
@@ -42,7 +39,6 @@ config:
 - The `config` field is reserved for future or extended configuration options.
 - It should not be used as a row key.
 
----
 
 ## Rows: All Other Top-Level Keys
 
@@ -74,26 +70,64 @@ rowkey2:
   columnkey3: Row 2, Column 3
 ```
 
----
+## Cell Formatting
 
-## Full Example
+### HTML support
+
+All cells are converted into html, so any html will renders.
 
 ```yaml
-yamltabl: 2.0.0
-
-columns:
-  - product: Product
-  - price: Price
-  - notes: Notes
-
 row1:
-  product: Apple
-  price: $1.00
-  notes: Crisp and red
-
-row2:
-  product: Banana
-  price: $0.50
+  column1: <b>I am a bold</b>
+  column2: <i>I am italic</i>
+  column3: <button>I am a button</button>
 ```
 
-This will render a table with three columns and two rows, formatted according to the given schema.
+Multiline HTML is also provided through built-in yaml multiline features.
+
+```yaml
+row1:
+  column1: >
+    <p>I am a</p>
+    <p>multiparagraph</p>
+    <p>text</p>
+  column2: |
+    <p>I too</p>
+    <p>am a </p>
+    <p>multiparagraph</p>
+    <p>text</p>
+```
+
+
+### List support
+
+To avoid huffing around with html when making lists with bulletpoints, the below syntax is supported.
+
+```yaml
+row1:
+  column1:
+    - list item 1
+    - list item 2
+    - list item 3
+```
+
+Nested lists are also supported. Note the need for the ":" unless it is a lowest level bullet point.
+
+```yaml
+row1:
+  column1:
+    - parent bullet point:
+        - child bullet point:
+            - baby bullet point
+            - baby bullet point
+        - child bullet point:
+            - baby bullet point
+            - baby bullet point
+    - parent bullet point:
+        - child bullet point:
+            - baby bullet point
+            - baby bullet point
+        - child bullet point:
+            - baby bullet point
+            - baby bullet point
+```

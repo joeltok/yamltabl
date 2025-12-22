@@ -2,7 +2,6 @@
 
 ```yamltabl
 yamltabl: 2.0.0
-yamltabl: 2.0.0
 
 columns:
   - column1: Column 1
@@ -24,7 +23,9 @@ row3:
     - bullet point
     - bullet point
   column2:
-    - bullet point
+    - bullet point:
+      - child bullet:
+        - baby bullet
     - bullet point
 
 ```

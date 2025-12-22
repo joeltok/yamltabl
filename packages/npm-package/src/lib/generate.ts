@@ -1,7 +1,9 @@
 import { promises as fs } from 'fs';
 import { Command } from 'commander';
+import { minify } from 'html-minifier-terser';
 
 import { renderHtml, renderMd } from '@yamltabl/yamltabl-core';
+import { minifyConfig } from '../configs/configs';
 
 export function buildCommandGenerate(program: Command) {
   program
@@ -19,11 +21,14 @@ export function buildCommandGenerate(program: Command) {
       const yamlFile = opts.input;
       const yamlString = await fs.readFile(yamlFile, 'utf8');
       try {
-        const formatters = {
-          html: renderHtml,
-          md: renderMd,
-        };
-        const str = await formatters[format](yamlString);
+        let str;
+        if (format === 'html') {
+          str = await minify(renderHtml(yamlString), minifyConfig)
+        } else if (format === 'md') {
+          str = renderMd(yamlString)
+        } else {
+          throw new Error(`${format} not supported`)
+        }
         await fs.writeFile(opts.output, str);
         console.log('ok.');
       } catch (err) {

@@ -2,7 +2,7 @@ import ejs from 'ejs';
 
 import { JsonTable } from '../types/types.js';
 
-export async function jsonToMd(jsonTable: JsonTable): Promise<string> {
+export function jsonToMd(jsonTable: JsonTable): string {
   const ejsTemplate = `
 | <% metadata.columns.forEach(c => { %><%= Object.values(c)[0] %> | <% }) %>
 | <% metadata.columns.forEach(() => { %>---| <% }) %>

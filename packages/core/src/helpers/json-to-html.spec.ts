@@ -65,7 +65,7 @@ describe('parseJsonTableToHtml', () => {
     `;
 
     const minifiedHtmlString = await minify(htmlString, minifyConfig);
-    const htmlStringResult = await jsonToHtml(jsonInput);
+    const htmlStringResult = await minify(jsonToHtml(jsonInput), minifyConfig);
     expect(htmlStringResult).toEqual(minifiedHtmlString);
   });
 });

@@ -1,10 +1,8 @@
 import ejs from 'ejs';
-import { minify } from 'html-minifier-terser';
 
 import { JsonTable } from '../types/types.js';
-import { minifyConfig } from './configs.js';
 
-export async function jsonToHtml(jsonTable: JsonTable): Promise<string> {
+export function jsonToHtml(jsonTable: JsonTable): string {
   const ejsTemplate = `
     <table>
       <thead>
@@ -26,6 +24,5 @@ export async function jsonToHtml(jsonTable: JsonTable): Promise<string> {
     </table>
   `;
 
-  const htmlString = ejs.render(ejsTemplate, jsonTable);
-  return await minify(htmlString, minifyConfig);
+  return ejs.render(ejsTemplate, jsonTable);
 }

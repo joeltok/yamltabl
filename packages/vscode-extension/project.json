@@ -9,14 +9,25 @@
       "options": {
         "commands": [
           "node packages/vscode-extension/tools/build-src.js --watch",
+          "sleep 1 && cp packages/vscode-extension/samples/fixtures/* packages/vscode-extension/samples/playground/",
           "sleep 1 && cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json",
-          "sleep 2 && code packages/vscode-extension/samples --extensionDevelopmentPath=${PWD}/dist/packages/vscode-extension"
+          "sleep 2 && code packages/vscode-extension/samples/playground --extensionDevelopmentPath=${PWD}/dist/packages/vscode-extension"
         ],
         "parallel": true
       }
     },
-    "build:types": {},
-    "build": {},
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "node packages/vscode-extension/tools/build-src.js --production",
+          "sleep 1 && cp packages/vscode-extension/samples/fixtures/* packages/vscode-extension/samples/playground/",
+          "sleep 1 && cp packages/vscode-extension/README.md packages/vscode-extension/README.md",
+          "sleep 1 && cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json"
+        ],
+        "parallel": true
+      }
+    },
     "test": {
       "executor": "nx:run-commands",
       "options": {
