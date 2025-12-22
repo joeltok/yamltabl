@@ -45,7 +45,7 @@ jobs:
         run: node dist/packages/npm-package/cli/cli.cjs --help 
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yamltabl-core:test
-      - run: pnpm exec nx run yamltabl-npm-package:test --skip-nx-cache --skip-dependencies
+      - run: pnpm exec nx run yamltabl-npm-package:test
 
   publish-npm:
     if: ${{ false }}  
