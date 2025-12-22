@@ -36,7 +36,7 @@
         "commands": [
           "node packages/vscode-extension/tools/build-src.js --production",
           "cp packages/vscode-extension/samples/fixtures/* packages/vscode-extension/samples/playground/",
-          "cp packages/vscode-extension/README.md packages/vscode-extension/README.md",
+          "cp packages/vscode-extension/README.md dist/packages/vscode-extension/README.md",
           "cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json"
         ],
         "parallel": false

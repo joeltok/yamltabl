@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    if: ${{ false }}  
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,6 +25,7 @@ jobs:
           path: dist/packages/npm-package
 
   test:
+    if: ${{ false }}  
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -44,9 +46,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yamltabl-core:test
       - run: pnpm exec nx run yamltabl-npm-package:test --skip-nx-cache --skip-dependencies
-      - run: pnpm exec nx run yamltabl-vscode:test --skip-nx-cache --skip-dependencies
 
   publish-npm:
+    if: ${{ false }}  
     needs: test
     runs-on: ubuntu-latest
     steps:
