@@ -1,25 +1,19 @@
 {
-  "name": "helloworld",
+  "name": "yamltabl-extension",
   "type": "module",
-  "displayName": "HelloWorld",
-  "description": "",
+  "displayName": "Yamltabl",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.107.0"
   },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [],
-  "main": "./lib/index.js",
+  "main": "./lib/index.cjs",
   "contributes": {
+    "markdown.markdownItPlugins": true,
     "commands": [
       {
         "command": "helloworld.helloWorld",
         "title": "Hello World"
       }
     ]
-  },
-  "scripts": {},
-  "devDependencies": {}
+  }
 }

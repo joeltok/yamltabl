@@ -6,15 +6,9 @@
   "targets": {
     "dev": {
       "executor": "nx:run-commands",
-      "dependsOn": [
-        {
-          "target": "build:meta",
-          "projects": "self"
-        }
-      ],
       "options": {
         "commands": [
-          "node packages/vscode-extension/tools/build.js --watch",
+          "node packages/vscode-extension/tools/build-src.js --watch",
           "sleep 1 && cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json",
           "sleep 2 && code packages/vscode-extension/samples --extensionDevelopmentPath=${PWD}/dist/packages/vscode-extension"
         ],
@@ -23,6 +17,15 @@
     },
     "build:types": {},
     "build": {},
-    "test": {}
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "node packages/vscode-extension/tools/build-e2e.js",
+          "vscode-test --config packages/vscode-extension/.vscode-test.mjs"
+        ],
+        "parallel": false
+      }
+    }
   }
 }

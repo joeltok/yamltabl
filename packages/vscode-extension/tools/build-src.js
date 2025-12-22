@@ -6,7 +6,7 @@ const watch = process.argv.includes('--watch');
 async function main() {
 	const ctx = await esbuild.context({
     entryPoints: ['packages/vscode-extension/src/index.ts'],
-    outfile: 'dist/packages/vscode-extension/lib/index.js',
+    outfile: 'dist/packages/vscode-extension/lib/index.cjs',
 		bundle: true,
 		format: 'cjs',
     target: 'es2020',
