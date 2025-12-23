@@ -8,7 +8,8 @@ Perfect for everything-as-code documentation and static sites — without the me
 
 Add the following delimited code block to any Markdown file. It will render as a Markdown table. 
 
-```yaml
+````
+```yamltabl
 yamltabl: 2.0.0
 
 columns:
@@ -29,5 +30,6 @@ row2:
   line2: And within every dewdrop
   line3: A world of struggle.
 ```
+````
 
 👉 See the [full schema specification](https://github.com/joeltok/yamltabl/blob/main/packages/npm-package/docs/schema.md) for a breakdown of each section and more.
