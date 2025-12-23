@@ -15,8 +15,8 @@
       "options": {
         "commands": [
           "mkdir -p tmp",
-          "node packages/vscode-extension/tools/build-e2e.js",
-          "vscode-test --config packages/vscode-extension/.vscode-test.mjs"
+          "node {projectRoot}/tools/build-e2e.js",
+          "vscode-test --config {projectRoot}/.vscode-test.mjs"
         ],
         "parallel": false
       }
@@ -25,10 +25,10 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "node packages/vscode-extension/tools/build-src.js --watch",
-          "sleep 1 && cp packages/vscode-extension/samples/fixtures/* packages/vscode-extension/samples/playground/",
-          "sleep 1 && cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json",
-          "sleep 2 && code packages/vscode-extension/samples/playground --extensionDevelopmentPath=${PWD}/dist/packages/vscode-extension"
+          "node {projectRoot}/tools/build-src.js --watch",
+          "sleep 1 && cp {projectRoot}/samples/fixtures/* {projectRoot}/samples/playground/",
+          "sleep 1 && cp {projectRoot}/package.json dist/packages/vscode-extension/package.json",
+          "sleep 2 && code {projectRoot}/samples/playground --extensionDevelopmentPath=${PWD}/dist/packages/vscode-extension"
         ],
         "parallel": true
       }
@@ -37,11 +37,11 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "node packages/vscode-extension/tools/build-src.js --production",
+          "node {projectRoot}/tools/build-src.js --production",
           "mkdir -p dist/packages/vscode-extension/samples/fixtures",
-          "cp packages/vscode-extension/README.md dist/packages/vscode-extension/README.md",
-          "cp packages/vscode-extension/package.json dist/packages/vscode-extension/package.json",
-          "cp packages/vscode-extension/samples/fixtures/basic.md dist/packages/vscode-extension/samples/fixtures/basic.md"
+          "cp {projectRoot}/README.md dist/packages/vscode-extension/README.md",
+          "cp {projectRoot}/package.json dist/packages/vscode-extension/package.json",
+          "cp {projectRoot}/samples/fixtures/basic.md dist/packages/vscode-extension/samples/fixtures/basic.md"
         ],
         "parallel": false
       }
