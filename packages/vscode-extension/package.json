@@ -8,6 +8,7 @@
     "vscode": "^1.85.0"
   },
   "main": "./lib/index.cjs",
+  "activationEvents": [],
   "contributes": {
     "markdown.markdownItPlugins": true
   }
