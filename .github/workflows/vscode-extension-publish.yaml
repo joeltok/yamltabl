@@ -39,9 +39,13 @@ jobs:
         with:
           name: yamltabl-dist
           path: dist/packages/vscode-extension
+      - name: Install Linux Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2 libgbm1 libgtk-3-0 libnss3 xorg-dev xvfb
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yamltabl-core:test
-      - run: pnpm exec nx run yamltabl-vscode-extension:test --verbose
+      - run: xvfb-run pnpm exec nx run yamltabl-vscode-extension:test --verbose
 
   publish-vscode-extension:
     needs: test
