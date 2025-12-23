@@ -65,4 +65,7 @@ jobs:
           name: yamltabl-dist
           path: dist/packages/npm-package
       - run: pnpm install --frozen-lockfile
-      - run: pnpm publish dist/packages/npm-package --access public --no-git-checks --provenance
+      - name: Publish to npm
+        run: pnpm publish dist/packages/npm-package --access public --no-git-checks --provenance
+        env: 
+          NPM_CONFIG_PROVENANCE: true
