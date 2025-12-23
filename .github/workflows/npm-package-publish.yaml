@@ -65,6 +65,8 @@ jobs:
         with:
           name: yamltabl-dist
           path: dist/packages/npm-package
+      - name: Ensure latest npm for OIDC
+        run: npm install -g npm@latest
       - run: pnpm install --frozen-lockfile
       - name: Publish to npm
         run: cd dist/packages/npm-package && pnpm publish --access public --no-git-checks --provenance
