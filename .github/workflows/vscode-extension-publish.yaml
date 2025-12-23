@@ -42,9 +42,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec nx run yamltabl-core:test
       - run: xvfb-run pnpm exec nx run yamltabl-vscode-extension:test --verbose
-      # - name: Run headless test
-      #   uses: coactions/setup-xvfb@v1
-      #   with:
 
   publish-vscode-extension:
     needs: test
@@ -63,4 +60,4 @@ jobs:
           name: yamltabl-dist
           path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
-      - run: cd dist && vsce package
+      - run: cd dist & vsce package
