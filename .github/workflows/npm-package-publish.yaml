@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-    if: ${{ false }}  
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +24,6 @@ jobs:
           path: dist/packages/npm-package
 
   test:
-    if: ${{ false }}  
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -48,9 +46,11 @@ jobs:
       - run: pnpm exec nx run yamltabl-npm-package:test
 
   publish-npm:
-    if: ${{ false }}  
     needs: test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
