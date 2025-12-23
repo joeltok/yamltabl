@@ -60,4 +60,4 @@ jobs:
           name: yamltabl-dist
           path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
-      - run: cd dist & vsce package
+      - run: cd dist & pnpm vsce package
