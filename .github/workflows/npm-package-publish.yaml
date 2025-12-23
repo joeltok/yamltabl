@@ -65,9 +65,4 @@ jobs:
           name: yamltabl-dist
           path: dist/packages/npm-package
       - run: pnpm install --frozen-lockfile
-      - name: Create .npmrc for publishing to npmjs.com
-        run: echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
-      - name: Publish to npm
-        run: pnpm publish dist/packages/npm-package --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+      - run: pnpm publish --provenance --no-git-checks
