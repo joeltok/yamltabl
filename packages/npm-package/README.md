@@ -1,6 +1,6 @@
 # Yamltabl
 
-Yamltabl lets you define tables in YAML using a predictable schema — and render to Markdown or HTML.
+Yamltabl lets you define tables in YAML using a human-readable schema — and render to Markdown or HTML.
 
 Perfect for everything-as-code documentation and static sites — without the messiness of raw Markdown or HTML tables.
 
