@@ -2,7 +2,7 @@
 
 ## Setup and Installation
 
-This library using [mise](https://github.com/jdx/mise) for version management, and [nx](https://nx.dev/) for build and test management.
+This library uses [mise](https://github.com/jdx/mise) for version management, and [nx](https://nx.dev/) for build and test management.
 
 ```bash
 # versions of node and pnpm used
