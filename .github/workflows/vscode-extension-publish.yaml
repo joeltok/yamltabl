@@ -60,10 +60,10 @@ jobs:
           name: yamltabl-dist
           path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
-      - run: cd dist/packages/vscode-extension && pnpm ovsx package
-      - run: cd dist/packages/vscode-extension && pnpm ovsx publish --registryUrl https://visualstudio.com
+      - run: cd dist/packages/vscode-extension && pnpm vsce package
+      - run: cd dist/packages/vscode-extension && pnpm vsce publish
         env:
-          OVSX_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+          VSCE_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
 
   publish-open-vsx:
     needs: test
