@@ -36,8 +36,7 @@
         "commands": [
           "cp packages/npm-package/package.json dist/packages/npm-package/package.json",
           "cp packages/npm-package/README.md dist/packages/npm-package/README.md",
-          "cp LICENSE dist/packages/npm-package/LICENSE",
-          "cp -r packages/npm-package/docs dist/packages/npm-package/docs"
+          "cp LICENSE dist/packages/npm-package/LICENSE"
         ],
         "cwd": "."
       }
