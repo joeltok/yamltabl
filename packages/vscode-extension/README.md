@@ -1,8 +1,8 @@
 # Markdown Preview Yamltabl Support
 
-Add Yamltabl support to Markdown Preview. Yamltabl lets you define tables in YAML using a human-readable schema. 
+Add Yamltabl support to Markdown Preview. Yamltabl lets you define tables in YAML using a human-readable schema.
 
-Perfect for everything-as-code documentation and static sites — without the messiness of raw Markdown or HTML tables.
+Perfect for everything-as-code documentation and static sites — without the messiness of raw Markdown, HTML, or embeddable spreadsheet tables.
 
 ## Usage
 
@@ -32,4 +32,4 @@ row2:
 ```
 ````
 
-👉 See the [full schema specification](https://github.com/joeltok/yamltabl/blob/main/packages/npm-package/docs/schema.md) for a breakdown of each section and more.
+👉 See the [full schema specification](https://github.com/joeltok/yamltabl/blob/main/docs/schema.md) for a breakdown of each section and more.

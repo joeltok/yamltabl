@@ -1,10 +1,8 @@
 # Yamltabl
 
-Yamltabl lets you define tables in YAML using a human-readable schema — and render to Markdown or HTML.
+Yamltabl lets you define tables in YAML using a human-readable schema.
 
-Perfect for everything-as-code documentation and static sites — without the messiness of raw Markdown or HTML tables.
-
-<!-- Vision: YAML as your table editor — powered by a predictable schema, with built-in Markdown/HTML rendering -->
+Perfect for everything-as-code documentation and static sites — without the messiness of raw Markdown, HTML, or embeddable spreadsheet tables.
 
 ## Quick Example
 
@@ -67,7 +65,7 @@ Yamltabl converts the YAML above into a Markdown-compatible table:
 </table>
 ```
 
-👉 See the [full schema specification](https://github.com/joeltok/yamltabl/blob/main/packages/npm-package/docs/schema.md) for a breakdown of each section and more.
+👉 See the [full schema specification](https://github.com/joeltok/yamltabl/blob/main/docs/schema.md) for a breakdown of each section and more.
 
 ## Usage and Installation
 
@@ -121,5 +119,5 @@ const mdString = await renderMd(yamlString);
 console.log(mdString);
 ```
 
-👉 Compare with other table authoring formats in [this comparison guide](https://github.com/joeltok/yamltabl/blob/main/packages/npm-package/docs/syntax-comparisons.md).
+👉 Compare with other table authoring formats in [this comparison guide](https://github.com/joeltok/yamltabl/blob/main/docs/syntax-comparisons.md).
 
