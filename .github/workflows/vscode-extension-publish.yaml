@@ -61,7 +61,7 @@ jobs:
           path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
       - run: cd dist/packages/vscode-extension && pnpm ovsx package
-      - run: cd dist/packages/vscode-extension && pnpm ovsx publish --registry https://visualstudio.com
+      - run: cd dist/packages/vscode-extension && pnpm ovsx publish --registryUrl https://visualstudio.com
         env:
           OVSX_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
 
@@ -83,6 +83,6 @@ jobs:
           path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
       - run: cd dist/packages/vscode-extension && pnpm ovsx package
-      - run: cd dist/packages/vscode-extension && pnpm ovsx publish --registry https://open-vsx.org
+      - run: cd dist/packages/vscode-extension && pnpm ovsx publish --registryUrl https://open-vsx.org
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
