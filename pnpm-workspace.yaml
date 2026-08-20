@@ -1,3 +1,10 @@
 packages:
   - 'packages/libs/**'
   - 'packages/tools/**'
+allowBuilds:
+  '@swc/core': true
+  '@vscode/vsce-sign': true
+  core-js: true
+  esbuild: true
+  keytar: true
+  nx: true
