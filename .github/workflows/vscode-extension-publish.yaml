@@ -43,7 +43,7 @@ jobs:
       - run: pnpm exec nx run yamltabl-core:test
       - run: xvfb-run pnpm exec nx run yamltabl-vscode-extension:test --verbose
 
-  publish-vscode-extension:
+  publish-vs-marketplace:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +60,29 @@ jobs:
           name: yamltabl-dist
           path: dist/packages/vscode-extension
       - run: pnpm install --frozen-lockfile
-      - run: cd dist/packages/vscode-extension && pnpm vsce package
-      - run: cd dist/packages/vscode-extension && pnpm vsce publish
+      - run: cd dist/packages/vscode-extension && pnpm ovsx package
+      - run: cd dist/packages/vscode-extension && pnpm ovsx publish --registry https://visualstudio.com
         env:
-          VSCE_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+          OVSX_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+
+  publish-open-vsx:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: yamltabl-dist
+          path: dist/packages/vscode-extension
+      - run: pnpm install --frozen-lockfile
+      - run: cd dist/packages/vscode-extension && pnpm ovsx package
+      - run: cd dist/packages/vscode-extension && pnpm ovsx publish --registry https://open-vsx.org
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}

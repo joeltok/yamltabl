@@ -1,5 +1,8 @@
 # YamlTabl
 
+<!-- [![Visual Studio Marketplace](https://shields.io)](https://visualstudio.com)
+[![Open VSX](https://shields.io)](https://open-vsx.org) -->
+
 ## Setup and Installation
 
 This library uses [mise](https://github.com/jdx/mise) for version management, and [nx](https://nx.dev/) for build and test management.
