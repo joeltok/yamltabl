@@ -40,6 +40,7 @@
           "node {projectRoot}/tools/build-src.js --production",
           "mkdir -p dist/packages/vscode-extension/samples/fixtures",
           "cp {projectRoot}/README.md dist/packages/vscode-extension/README.md",
+          "cp LICENSE dist/packages/vscode-extension/LICENSE",
           "cp {projectRoot}/package.json dist/packages/vscode-extension/package.json",
           "cp {projectRoot}/samples/fixtures/basic.md dist/packages/vscode-extension/samples/fixtures/basic.md"
         ],
